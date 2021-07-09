@@ -1,11 +1,15 @@
 A sample app can be found in the following repository:
+
 https://github.com/ltrudu/DataCaptureReceiver
 
 This library is available in jetpack.io
+
 To get it, you should add the following repository source in your build.graddle:
+
 maven { url 'https://jitpack.io' }
 
 Then, you can add the following dependency:
+
 implementation 'com.github.ltrudu:DataWedgeIntentWrapper:V6.7.6'
 
 # END USER LICENSE AGREEMENT (UNRESTRICTED SOFTWARE)
