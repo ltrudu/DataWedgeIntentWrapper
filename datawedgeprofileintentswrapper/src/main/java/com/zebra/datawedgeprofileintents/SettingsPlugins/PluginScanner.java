@@ -385,7 +385,8 @@ public class PluginScanner
         if(Decoders.decoder_us4state                                != null            ) barcodeProps.putString(   "decoder_us4state"                         , Decoders.decoder_us4state                        ? "true":"false");
         if(Decoders.decoder_usplanet                                != null            ) barcodeProps.putString(   "decoder_usplanet"                         , Decoders.decoder_usplanet                        ? "true":"false");
         if(Decoders.decoder_uspostnet                               != null            ) barcodeProps.putString(   "decoder_uspostnet"                        , Decoders.decoder_uspostnet                       ? "true":"false");
-        if(Decoders.decoder_webcode                                 != null            ) barcodeProps.putString(   "decoder_webcode"                          , Decoders.decoder_webcode                         ? "true":"false");
+        //if(Decoders.decoder_webcode                                 != null            ) barcodeProps.putString(   "decoder_webcode"                          , Decoders.decoder_webcode                         ? "true":"false");
+        if(Decoders.decoder_webcode                                 != null            ) barcodeProps.putBoolean(   "decoder_webcode"                          , Decoders.decoder_webcode);
     }
 
     private  void setupDecodersParams(Bundle barcodeProps)
