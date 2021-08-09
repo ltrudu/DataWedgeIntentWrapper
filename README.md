@@ -1,6 +1,6 @@
 A sample app can be found in the following repository:
 
-https://github.com/ltrudu/DataCaptureReceiver
+https://github.com/ltrudu/DataWedgeIntentWrapperSampleApplication
 
 This library is available in jetpack.io
 
