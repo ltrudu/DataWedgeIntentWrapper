@@ -68,7 +68,7 @@ public class DWStatusScanner {
         }
     };
 
-    public void registerForScannerStatus(DWStatusScannerSettings settings)
+    protected void registerForScannerStatus(DWStatusScannerSettings settings)
     {
         Bundle b = new Bundle();
         b.putString(DataWedgeConstants.EXTRA_KEY_APPLICATION_NAME, settings.mPackageName);
@@ -79,7 +79,7 @@ public class DWStatusScanner {
         mContext.getApplicationContext().sendBroadcast(i);
     }
 
-    public void unRegisterForScannerStatus(DWStatusScannerSettings settings)
+    protected void unRegisterForScannerStatus(DWStatusScannerSettings settings)
     {
         Bundle b = new Bundle();
         b.putString(DataWedgeConstants.EXTRA_KEY_APPLICATION_NAME, settings.mPackageName);

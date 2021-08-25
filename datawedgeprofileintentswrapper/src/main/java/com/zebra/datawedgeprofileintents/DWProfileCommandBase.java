@@ -10,6 +10,8 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.Log;
 
+import com.zebra.datawedgeprofileenums.SC_S_SCANNER_STATUS;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -31,6 +33,7 @@ public class DWProfileCommandBase extends DWProfileBase {
         super(aContext);
         mBroadcastReceiver = new dataWedgeActionResultReceiver();
     }
+
 
     /*
         An interface callback to be informed of the result
@@ -92,6 +95,7 @@ public class DWProfileCommandBase extends DWProfileBase {
         dwIntent.putExtra("COMMAND_IDENTIFIER",mCommandIdentifier);
         mContext.sendBroadcast(dwIntent);
     }
+
 
     protected void sendDataWedgeIntentWithExtraRequestResult(String action, String extraKey, boolean extraValue)
     {
