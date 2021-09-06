@@ -107,6 +107,8 @@ public class DataWedgeConstants {
     public static final String EXTRA_GET_DATAWEDGE_STATUS = "com.symbol.datawedge.api.GET_DATAWEDGE_STATUS";
     //  6.4 API and up Parameter keys and values associated with extras received from Datawedge
     public static final String EXTRA_RESULT_GET_DATAWEDGE_STATUS = "com.symbol.datawedge.api.RESULT_GET_DATAWEDGE_STATUS";
+    public static final String EXTRA_RESULT_DATAWEDGE_ENABLED = "enabled";
+
 
     //  6.5 API and up Extras sent to Datawedge
     public static final String EXTRA_SEND_RESULT = "SEND_RESULT";
