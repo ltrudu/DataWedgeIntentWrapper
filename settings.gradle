@@ -1,1 +1,2 @@
 include  ':datawedgeprofileintentswrapper'
+rootProject.name = "datawedgeprofileintentswrapper"
