@@ -385,102 +385,101 @@ public class PluginScanner
         if(Decoders.decoder_us4state                                != null            ) barcodeProps.putString(   "decoder_us4state"                         , Decoders.decoder_us4state                        ? "true":"false");
         if(Decoders.decoder_usplanet                                != null            ) barcodeProps.putString(   "decoder_usplanet"                         , Decoders.decoder_usplanet                        ? "true":"false");
         if(Decoders.decoder_uspostnet                               != null            ) barcodeProps.putString(   "decoder_uspostnet"                        , Decoders.decoder_uspostnet                       ? "true":"false");
-        //if(Decoders.decoder_webcode                                 != null            ) barcodeProps.putString(   "decoder_webcode"                          , Decoders.decoder_webcode                         ? "true":"false");
-        if(Decoders.decoder_webcode                                 != null            ) barcodeProps.putBoolean(   "decoder_webcode"                          , Decoders.decoder_webcode);
+        if(Decoders.decoder_webcode                                 != null            ) barcodeProps.putString(   "decoder_webcode"                          , Decoders.decoder_webcode                         ? "true":"false");
     }
 
     private  void setupDecodersParams(Bundle barcodeProps)
     {
-        if(DecodersParams.decoder_codabar_clsi_editing                    != null   ) barcodeProps.putBoolean(   "decoder_codabar_clsi_editing"             , DecodersParams.decoder_codabar_clsi_editing             );
-        if(DecodersParams.decoder_codabar_length1                         != null   ) barcodeProps.putInt(       "decoder_codabar_length1"                  , DecodersParams.decoder_codabar_length1                  );
-        if(DecodersParams.decoder_codabar_length2                         != null   ) barcodeProps.putInt(       "decoder_codabar_length2"                  , DecodersParams.decoder_codabar_length2                  );
-        if(DecodersParams.decoder_codabar_notis_editing                   != null   ) barcodeProps.putBoolean(   "decoder_codabar_notis_editing"            , DecodersParams.decoder_codabar_notis_editing            );
-        if(DecodersParams.decoder_codabar_redundancy                      != null   ) barcodeProps.putBoolean(   "decoder_codabar_redundancy"               , DecodersParams.decoder_codabar_redundancy               );
-        if(DecodersParams.decoder_code11_length1                          != null   ) barcodeProps.putInt(       "decoder_code11_length1"                   , DecodersParams.decoder_code11_length1                   );
-        if(DecodersParams.decoder_code11_length2                          != null   ) barcodeProps.putInt(       "decoder_code11_length2"                   , DecodersParams.decoder_code11_length2                   );
-        if(DecodersParams.decoder_code11_redundancy                       != null   ) barcodeProps.putBoolean(   "decoder_code11_redundancy"                , DecodersParams.decoder_code11_redundancy                );
-        if(DecodersParams.decoder_code11_report_check_digit               != null   ) barcodeProps.putBoolean(   "decoder_code11_report_check_digit"        , DecodersParams.decoder_code11_report_check_digit        );
+        if(DecodersParams.decoder_codabar_clsi_editing                    != null   ) barcodeProps.putString(   "decoder_codabar_clsi_editing"             , DecodersParams.decoder_codabar_clsi_editing             ? "true":"false");
+        if(DecodersParams.decoder_codabar_length1                         != null   ) barcodeProps.putString(       "decoder_codabar_length1"                  , DecodersParams.decoder_codabar_length1.toString()                  );
+        if(DecodersParams.decoder_codabar_length2                         != null   ) barcodeProps.putString(       "decoder_codabar_length2"                  , DecodersParams.decoder_codabar_length2.toString()                  );
+        if(DecodersParams.decoder_codabar_notis_editing                   != null   ) barcodeProps.putString(   "decoder_codabar_notis_editing"            , DecodersParams.decoder_codabar_notis_editing            ? "true":"false");
+        if(DecodersParams.decoder_codabar_redundancy                      != null   ) barcodeProps.putString(   "decoder_codabar_redundancy"               , DecodersParams.decoder_codabar_redundancy               ? "true":"false");
+        if(DecodersParams.decoder_code11_length1                          != null   ) barcodeProps.putString(       "decoder_code11_length1"                   , DecodersParams.decoder_code11_length1.toString()                   );
+        if(DecodersParams.decoder_code11_length2                          != null   ) barcodeProps.putString(       "decoder_code11_length2"                   , DecodersParams.decoder_code11_length2.toString()                   );
+        if(DecodersParams.decoder_code11_redundancy                       != null   ) barcodeProps.putString(   "decoder_code11_redundancy"                , DecodersParams.decoder_code11_redundancy                ? "true":"false");
+        if(DecodersParams.decoder_code11_report_check_digit               != null   ) barcodeProps.putString(   "decoder_code11_report_check_digit"        , DecodersParams.decoder_code11_report_check_digit        ? "true":"false");
         if(DecodersParams.decoder_code11_verify_check_digit               != null   ) barcodeProps.putString(    "decoder_code11_verify_check_digit"        , DecodersParams.decoder_code11_verify_check_digit.toString()        );
-        if(DecodersParams.decoder_code128_check_isbt_table                != null   ) barcodeProps.putBoolean(   "decoder_code128_check_isbt_table"         , DecodersParams.decoder_code128_check_isbt_table         );
-        if(DecodersParams.decoder_code128_enable_ean128                   != null   ) barcodeProps.putBoolean(   "decoder_code128_enable_ean128"            , DecodersParams.decoder_code128_enable_ean128            );
-        if(DecodersParams.decoder_code128_enable_isbt128                  != null   ) barcodeProps.putBoolean(   "decoder_code128_enable_isbt128"           , DecodersParams.decoder_code128_enable_isbt128           );
-        if(DecodersParams.decoder_code128_enable_plain                    != null   ) barcodeProps.putBoolean(   "decoder_code128_enable_plain"             , DecodersParams.decoder_code128_enable_plain             );
+        if(DecodersParams.decoder_code128_check_isbt_table                != null   ) barcodeProps.putString(   "decoder_code128_check_isbt_table"         , DecodersParams.decoder_code128_check_isbt_table         ? "true":"false");
+        if(DecodersParams.decoder_code128_enable_ean128                   != null   ) barcodeProps.putString(   "decoder_code128_enable_ean128"            , DecodersParams.decoder_code128_enable_ean128            ? "true":"false");
+        if(DecodersParams.decoder_code128_enable_isbt128                  != null   ) barcodeProps.putString(   "decoder_code128_enable_isbt128"           , DecodersParams.decoder_code128_enable_isbt128           ? "true":"false");
+        if(DecodersParams.decoder_code128_enable_plain                    != null   ) barcodeProps.putString(   "decoder_code128_enable_plain"             , DecodersParams.decoder_code128_enable_plain             ? "true":"false");
         if(DecodersParams.decoder_code128_isbt128_concat_mode             != null   ) barcodeProps.putString(    "decoder_code128_isbt128_concat_mode"      , DecodersParams.decoder_code128_isbt128_concat_mode.toString()      );
-        if(DecodersParams.decoder_code128_length1                         != null   ) barcodeProps.putInt(       "decoder_code128_length1"                  , DecodersParams.decoder_code128_length1                  );
-        if(DecodersParams.decoder_code128_length2                         != null   ) barcodeProps.putInt(       "decoder_code128_length2"                  , DecodersParams.decoder_code128_length2                  );
-        if(DecodersParams.decoder_code128_redundancy                      != null   ) barcodeProps.putBoolean(   "decoder_code128_redundancy"               , DecodersParams.decoder_code128_redundancy               );
+        if(DecodersParams.decoder_code128_length1                         != null   ) barcodeProps.putString(       "decoder_code128_length1"                  , DecodersParams.decoder_code128_length1.toString()                  );
+        if(DecodersParams.decoder_code128_length2                         != null   ) barcodeProps.putString(       "decoder_code128_length2"                  , DecodersParams.decoder_code128_length2.toString()                  );
+        if(DecodersParams.decoder_code128_redundancy                      != null   ) barcodeProps.putString(   "decoder_code128_redundancy"               , DecodersParams.decoder_code128_redundancy               ? "true":"false");
         if(DecodersParams.decoder_code128_security_level                  != null   ) barcodeProps.putString(    "decoder_code128_security_level"           , DecodersParams.decoder_code128_security_level.toString()           );
-        if(DecodersParams.code128_ignore_fnc4                             != null   ) barcodeProps.putBoolean(   "code128_ignore_fnc4"                      , DecodersParams.code128_ignore_fnc4                      );
-        if(DecodersParams.decoder_code39_convert_to_code32                != null   ) barcodeProps.putBoolean(   "decoder_code39_convert_to_code32"         , DecodersParams.decoder_code39_convert_to_code32         );
-        if(DecodersParams.decoder_code39_full_ascii                       != null   ) barcodeProps.putBoolean(   "decoder_code39_full_ascii"                , DecodersParams.decoder_code39_full_ascii                );
-        if(DecodersParams.decoder_code39_length1                          != null   ) barcodeProps.putInt(       "decoder_code39_length1"                   , DecodersParams.decoder_code39_length1                   );
-        if(DecodersParams.decoder_code39_length2                          != null   ) barcodeProps.putInt(       "decoder_code39_length2"                   , DecodersParams.decoder_code39_length2                   );
-        if(DecodersParams.decoder_code39_redundancy                       != null   ) barcodeProps.putBoolean(   "decoder_code39_redundancy"                , DecodersParams.decoder_code39_redundancy                );
-        if(DecodersParams.decoder_code39_report_check_digit               != null   ) barcodeProps.putBoolean(   "decoder_code39_report_check_digit"        , DecodersParams.decoder_code39_report_check_digit        );
-        if(DecodersParams.decoder_code39_report_code32_prefix             != null   ) barcodeProps.putBoolean(   "decoder_code39_report_code32_prefix"      , DecodersParams.decoder_code39_report_code32_prefix      );
+        if(DecodersParams.code128_ignore_fnc4                             != null   ) barcodeProps.putString(   "code128_ignore_fnc4"                      , DecodersParams.code128_ignore_fnc4                      ? "true":"false");
+        if(DecodersParams.decoder_code39_convert_to_code32                != null   ) barcodeProps.putString(   "decoder_code39_convert_to_code32"         , DecodersParams.decoder_code39_convert_to_code32         ? "true":"false");
+        if(DecodersParams.decoder_code39_full_ascii                       != null   ) barcodeProps.putString(   "decoder_code39_full_ascii"                , DecodersParams.decoder_code39_full_ascii                ? "true":"false");
+        if(DecodersParams.decoder_code39_length1                          != null   ) barcodeProps.putString(       "decoder_code39_length1"                   , DecodersParams.decoder_code39_length1.toString()                   );
+        if(DecodersParams.decoder_code39_length2                          != null   ) barcodeProps.putString(       "decoder_code39_length2"                   , DecodersParams.decoder_code39_length2.toString()                   );
+        if(DecodersParams.decoder_code39_redundancy                       != null   ) barcodeProps.putString(   "decoder_code39_redundancy"                , DecodersParams.decoder_code39_redundancy                ? "true":"false");
+        if(DecodersParams.decoder_code39_report_check_digit               != null   ) barcodeProps.putString(   "decoder_code39_report_check_digit"        , DecodersParams.decoder_code39_report_check_digit        ? "true":"false");
+        if(DecodersParams.decoder_code39_report_code32_prefix             != null   ) barcodeProps.putString(   "decoder_code39_report_code32_prefix"      , DecodersParams.decoder_code39_report_code32_prefix      ? "true":"false");
         if(DecodersParams.decoder_code39_security_level                   != null   ) barcodeProps.putString(    "decoder_code39_security_level"            , DecodersParams.decoder_code39_security_level.toString()            );
-        if(DecodersParams.decoder_code39_verify_check_digit               != null   ) barcodeProps.putBoolean(   "decoder_code39_verify_check_digit"        , DecodersParams.decoder_code39_verify_check_digit        );
-        if(DecodersParams.decoder_code93_length1                          != null   ) barcodeProps.putInt(       "decoder_code93_length1"                   , DecodersParams.decoder_code93_length1                   );
-        if(DecodersParams.decoder_code93_length2                          != null   ) barcodeProps.putInt(       "decoder_code93_length2"                   , DecodersParams.decoder_code93_length2                   );
-        if(DecodersParams.decoder_code93_redundancy                       != null   ) barcodeProps.putBoolean(   "decoder_code93_redundancy"                , DecodersParams.decoder_code93_redundancy                );
+        if(DecodersParams.decoder_code39_verify_check_digit               != null   ) barcodeProps.putString(   "decoder_code39_verify_check_digit"        , DecodersParams.decoder_code39_verify_check_digit        ? "true":"false");
+        if(DecodersParams.decoder_code93_length1                          != null   ) barcodeProps.putString(       "decoder_code93_length1"                   , DecodersParams.decoder_code93_length1.toString()                   );
+        if(DecodersParams.decoder_code93_length2                          != null   ) barcodeProps.putString(       "decoder_code93_length2"                   , DecodersParams.decoder_code93_length2.toString()                   );
+        if(DecodersParams.decoder_code93_redundancy                       != null   ) barcodeProps.putString(   "decoder_code93_redundancy"                , DecodersParams.decoder_code93_redundancy                ? "true":"false");
         if(DecodersParams.decoder_composite_ab_ucc_link_mode              != null   ) barcodeProps.putString(    "decoder_composite_ab_ucc_link_mode"       , DecodersParams.decoder_composite_ab_ucc_link_mode.toString()       );
-        if(DecodersParams.decoder_d2of5_length1                           != null   ) barcodeProps.putInt(       "decoder_d2of5_length1"                    , DecodersParams.decoder_d2of5_length1                    );
-        if(DecodersParams.decoder_d2of5_length2                           != null   ) barcodeProps.putInt(       "decoder_d2of5_length2"                    , DecodersParams.decoder_d2of5_length2                    );
-        if(DecodersParams.decoder_d2of5_redundancy                        != null   ) barcodeProps.putBoolean(   "decoder_d2of5_redundancy"                 , DecodersParams.decoder_d2of5_redundancy                 );
-        if(DecodersParams.decoder_ean8_convert_to_ean13                   != null   ) barcodeProps.putBoolean(   "decoder_ean8_convert_to_ean13"            , DecodersParams.decoder_ean8_convert_to_ean13            );
+        if(DecodersParams.decoder_d2of5_length1                           != null   ) barcodeProps.putString(       "decoder_d2of5_length1"                    , DecodersParams.decoder_d2of5_length1.toString()                    );
+        if(DecodersParams.decoder_d2of5_length2                           != null   ) barcodeProps.putString(       "decoder_d2of5_length2"                    , DecodersParams.decoder_d2of5_length2.toString()                    );
+        if(DecodersParams.decoder_d2of5_redundancy                        != null   ) barcodeProps.putString(   "decoder_d2of5_redundancy"                 , DecodersParams.decoder_d2of5_redundancy                 ? "true":"false");
+        if(DecodersParams.decoder_ean8_convert_to_ean13                   != null   ) barcodeProps.putString(   "decoder_ean8_convert_to_ean13"            , DecodersParams.decoder_ean8_convert_to_ean13            ? "true":"false");
         if(DecodersParams.decoder_gs1_databar_exp                         != null   ) barcodeProps.putString(   "decoder_gs1_databar_exp"                  , DecodersParams.decoder_gs1_databar_exp ? "true" : "false"                  );
-        if(DecodersParams.decoder_gs1_databar_lim                         != null   ) barcodeProps.putBoolean(   "decoder_gs1_databar_lim"                  , DecodersParams.decoder_gs1_databar_lim                  );
+        if(DecodersParams.decoder_gs1_databar_lim                         != null   ) barcodeProps.putString(   "decoder_gs1_databar_lim"                  , DecodersParams.decoder_gs1_databar_lim                  ? "true":"false");
         if(DecodersParams.decoder_gs1_lim_security_level                  != null   ) barcodeProps.putString(    "decoder_gs1_lim_security_level"           , DecodersParams.decoder_gs1_lim_security_level.toString()           );
         if(DecodersParams.decoder_hanxin_inverse                          != null   ) barcodeProps.putString(    "decoder_hanxin_inverse"                   , DecodersParams.decoder_hanxin_inverse.toString()                   );
         if(DecodersParams.decoder_i2of5_check_digit                       != null   ) barcodeProps.putString(    "decoder_i2of5_check_digit"                , DecodersParams.decoder_i2of5_check_digit.toString()                );
-        if(DecodersParams.decoder_i2of5_length1                           != null   ) barcodeProps.putInt(       "decoder_i2of5_length1"                    , DecodersParams.decoder_i2of5_length1                    );
-        if(DecodersParams.decoder_i2of5_length2                           != null   ) barcodeProps.putInt(       "decoder_i2of5_length2"                    , DecodersParams.decoder_i2of5_length2                    );
-        if(DecodersParams.decoder_i2of5_redundancy                        != null   ) barcodeProps.putBoolean(   "decoder_i2of5_redundancy"                 , DecodersParams.decoder_i2of5_redundancy                 );
-        if(DecodersParams.decoder_i2of5_report_check_digit                != null   ) barcodeProps.putBoolean(   "decoder_i2of5_report_check_digit"         , DecodersParams.decoder_i2of5_report_check_digit         );
+        if(DecodersParams.decoder_i2of5_length1                           != null   ) barcodeProps.putString(       "decoder_i2of5_length1"                    , DecodersParams.decoder_i2of5_length1.toString()                    );
+        if(DecodersParams.decoder_i2of5_length2                           != null   ) barcodeProps.putString(       "decoder_i2of5_length2"                    , DecodersParams.decoder_i2of5_length2.toString()                    );
+        if(DecodersParams.decoder_i2of5_redundancy                        != null   ) barcodeProps.putString(   "decoder_i2of5_redundancy"                 , DecodersParams.decoder_i2of5_redundancy                 ? "true":"false");
+        if(DecodersParams.decoder_i2of5_report_check_digit                != null   ) barcodeProps.putString(   "decoder_i2of5_report_check_digit"         ,  DecodersParams.decoder_i2of5_report_check_digit ? "true" : "false"        );
         if(DecodersParams.decoder_i2of5_security_level                    != null   ) barcodeProps.putString(    "decoder_i2of5_security_level"             , DecodersParams.decoder_i2of5_security_level.toString()             );
-        if(DecodersParams.decoder_i2of5_convert_to_ean13                  != null   ) barcodeProps.putBoolean(   "decoder_i2of5_convert_to_ean13"           , DecodersParams.decoder_i2of5_convert_to_ean13           );
-        if(DecodersParams.decoder_itf14_convert_to_ean13                  != null   ) barcodeProps.putBoolean(   "decoder_itf14_convert_to_ean13"           , DecodersParams.decoder_itf14_convert_to_ean13           );
-        if(DecodersParams.decoder_matrix_2of5_length1                     != null   ) barcodeProps.putInt(       "decoder_matrix_2of5_length1"              , DecodersParams.decoder_matrix_2of5_length1              );
-        if(DecodersParams.decoder_matrix_2of5_length2                     != null   ) barcodeProps.putInt(       "decoder_matrix_2of5_length2"              , DecodersParams.decoder_matrix_2of5_length2              );
-        if(DecodersParams.decoder_matrix_2of5_redundancy                  != null   ) barcodeProps.putBoolean(   "decoder_matrix_2of5_redundancy"           , DecodersParams.decoder_matrix_2of5_redundancy           );
-        if(DecodersParams.decoder_matrix_2of5_report_check_digit          != null   ) barcodeProps.putBoolean(   "decoder_matrix_2of5_report_check_digit"   , DecodersParams.decoder_matrix_2of5_report_check_digit   );
-        if(DecodersParams.decoder_matrix_2of5_verify_check_digit          != null   ) barcodeProps.putBoolean(   "decoder_matrix_2of5_verify_check_digit"   , DecodersParams.decoder_matrix_2of5_verify_check_digit   );
+        if(DecodersParams.decoder_i2of5_convert_to_ean13                  != null   ) barcodeProps.putString(   "decoder_i2of5_convert_to_ean13"           , DecodersParams.decoder_i2of5_convert_to_ean13           ? "true":"false");
+        if(DecodersParams.decoder_itf14_convert_to_ean13                  != null   ) barcodeProps.putString(   "decoder_itf14_convert_to_ean13"           , DecodersParams.decoder_itf14_convert_to_ean13           ? "true":"false");
+        if(DecodersParams.decoder_matrix_2of5_length1                     != null   ) barcodeProps.putString(       "decoder_matrix_2of5_length1"              , DecodersParams.decoder_matrix_2of5_length1.toString()              );
+        if(DecodersParams.decoder_matrix_2of5_length2                     != null   ) barcodeProps.putString(       "decoder_matrix_2of5_length2"              , DecodersParams.decoder_matrix_2of5_length2.toString()              );
+        if(DecodersParams.decoder_matrix_2of5_redundancy                  != null   ) barcodeProps.putString(   "decoder_matrix_2of5_redundancy"           , DecodersParams.decoder_matrix_2of5_redundancy           ? "true":"false");
+        if(DecodersParams.decoder_matrix_2of5_report_check_digit          != null   ) barcodeProps.putString(   "decoder_matrix_2of5_report_check_digit"   , DecodersParams.decoder_matrix_2of5_report_check_digit   ? "true":"false");
+        if(DecodersParams.decoder_matrix_2of5_verify_check_digit          != null   ) barcodeProps.putString(   "decoder_matrix_2of5_verify_check_digit"   , DecodersParams.decoder_matrix_2of5_verify_check_digit   ? "true":"false");
         if(DecodersParams.decoder_msi_check_digit                         != null   ) barcodeProps.putString(    "decoder_msi_check_digit"                  , DecodersParams.decoder_msi_check_digit.toString()                  );
         if(DecodersParams.decoder_msi_check_digit_scheme                  != null   ) barcodeProps.putString(    "decoder_msi_check_digit_scheme"           , DecodersParams.decoder_msi_check_digit_scheme.toString()           );
-        if(DecodersParams.decoder_msi_length1                             != null   ) barcodeProps.putInt(       "decoder_msi_length1"                      , DecodersParams.decoder_msi_length1                      );
-        if(DecodersParams.decoder_msi_length2                             != null   ) barcodeProps.putInt(       "decoder_msi_length2"                      , DecodersParams.decoder_msi_length2                      );
-        if(DecodersParams.decoder_msi_redundancy                          != null   ) barcodeProps.putBoolean(   "decoder_msi_redundancy"                   , DecodersParams.decoder_msi_redundancy                   );
-        if(DecodersParams.decoder_msi_report_check_digit                  != null   ) barcodeProps.putBoolean(   "decoder_msi_report_check_digit"           , DecodersParams.decoder_msi_report_check_digit           );
-        if(DecodersParams.decoder_trioptic39_redundancy                   != null   ) barcodeProps.putBoolean(   "decoder_trioptic39_redundancy"            , DecodersParams.decoder_trioptic39_redundancy            );
-        if(DecodersParams.decoder_uk_postal_report_check_digit            != null   ) barcodeProps.putBoolean(   "decoder_uk_postal_report_check_digit"     , DecodersParams.decoder_uk_postal_report_check_digit     );
+        if(DecodersParams.decoder_msi_length1                             != null   ) barcodeProps.putString(       "decoder_msi_length1"                      , DecodersParams.decoder_msi_length1.toString()                      );
+        if(DecodersParams.decoder_msi_length2                             != null   ) barcodeProps.putString(       "decoder_msi_length2"                      , DecodersParams.decoder_msi_length2.toString()                      );
+        if(DecodersParams.decoder_msi_redundancy                          != null   ) barcodeProps.putString(   "decoder_msi_redundancy"                   , DecodersParams.decoder_msi_redundancy                   ? "true":"false");
+        if(DecodersParams.decoder_msi_report_check_digit                  != null   ) barcodeProps.putString(   "decoder_msi_report_check_digit"           , DecodersParams.decoder_msi_report_check_digit           ? "true":"false");
+        if(DecodersParams.decoder_trioptic39_redundancy                   != null   ) barcodeProps.putString(   "decoder_trioptic39_redundancy"            , DecodersParams.decoder_trioptic39_redundancy            ? "true":"false");
+        if(DecodersParams.decoder_uk_postal_report_check_digit            != null   ) barcodeProps.putString(   "decoder_uk_postal_report_check_digit"     , DecodersParams.decoder_uk_postal_report_check_digit     ? "true":"false");
         if(DecodersParams.decoder_upca_preamble                           != null   ) barcodeProps.putString(    "decoder_upca_preamble"                    , DecodersParams.decoder_upca_preamble.toString()                    );
-        if(DecodersParams.decoder_upca_report_check_digit                 != null   ) barcodeProps.putBoolean(   "decoder_upca_report_check_digit"          , DecodersParams.decoder_upca_report_check_digit          );
-        if(DecodersParams.decoder_upce0_convert_to_upca                   != null   ) barcodeProps.putBoolean(   "decoder_upce0_convert_to_upca"            , DecodersParams.decoder_upce0_convert_to_upca            );
+        if(DecodersParams.decoder_upca_report_check_digit                 != null   ) barcodeProps.putString(   "decoder_upca_report_check_digit"          , DecodersParams.decoder_upca_report_check_digit          ? "true":"false");
+        if(DecodersParams.decoder_upce0_convert_to_upca                   != null   ) barcodeProps.putString(   "decoder_upce0_convert_to_upca"            , DecodersParams.decoder_upce0_convert_to_upca            ? "true":"false");
         if(DecodersParams.decoder_upce0_preamble                          != null   ) barcodeProps.putString(    "decoder_upce0_preamble"                   , DecodersParams.decoder_upce0_preamble.toString()                   );
-        if(DecodersParams.decoder_upce0_report_check_digit                != null   ) barcodeProps.putBoolean(   "decoder_upce0_report_check_digit"         , DecodersParams.decoder_upce0_report_check_digit         );
-        if(DecodersParams.decoder_upce1_convert_to_upca                   != null   ) barcodeProps.putBoolean(   "decoder_upce1_convert_to_upca"            , DecodersParams.decoder_upce1_convert_to_upca            );
+        if(DecodersParams.decoder_upce0_report_check_digit                != null   ) barcodeProps.putString(   "decoder_upce0_report_check_digit"         , DecodersParams.decoder_upce0_report_check_digit         ? "true":"false");
+        if(DecodersParams.decoder_upce1_convert_to_upca                   != null   ) barcodeProps.putString(   "decoder_upce1_convert_to_upca"            , DecodersParams.decoder_upce1_convert_to_upca            ? "true":"false");
         if(DecodersParams.decoder_upce1_preamble                          != null   ) barcodeProps.putString(    "decoder_upce1_preamble"                   , DecodersParams.decoder_upce1_preamble.toString()                   );
-        if(DecodersParams.decoder_upce1_report_check_digit                != null   ) barcodeProps.putBoolean(   "decoder_upce1_report_check_digit"         , DecodersParams.decoder_upce1_report_check_digit         );
-        if(DecodersParams.decoder_us4state_fics                           != null   ) barcodeProps.putBoolean(   "decoder_us4state_fics"                    , DecodersParams.decoder_us4state_fics                    );
-        if(DecodersParams.decoder_usplanet_report_check_digit             != null   ) barcodeProps.putBoolean(   "decoder_usplanet_report_check_digit"      , DecodersParams.decoder_usplanet_report_check_digit      );
+        if(DecodersParams.decoder_upce1_report_check_digit                != null   ) barcodeProps.putString(   "decoder_upce1_report_check_digit"         , DecodersParams.decoder_upce1_report_check_digit         ? "true":"false");
+        if(DecodersParams.decoder_us4state_fics                           != null   ) barcodeProps.putString(   "decoder_us4state_fics"                    , DecodersParams.decoder_us4state_fics                    ? "true":"false");
+        if(DecodersParams.decoder_usplanet_report_check_digit             != null   ) barcodeProps.putString(   "decoder_usplanet_report_check_digit"      , DecodersParams.decoder_usplanet_report_check_digit      ? "true":"false");
    }
 
     private void setupUPC_EANParams(Bundle barcodeProps)
     {
         if( UpcEan.databar_to_upc_ean != null)
-            barcodeProps.putBoolean("databar_to_upc_ean", UpcEan.databar_to_upc_ean);
+            barcodeProps.putString("databar_to_upc_ean", UpcEan.databar_to_upc_ean ? "true":"false");
         if( UpcEan.upcean_bookland != null)
-            barcodeProps.putBoolean("upcean_bookland", UpcEan.upcean_bookland);
+            barcodeProps.putString("upcean_bookland", UpcEan.upcean_bookland ? "true":"false");
         if( UpcEan.upcean_bookland_format != null)
             barcodeProps.putString("upcean_bookland_format", UpcEan.upcean_bookland_format.toString());
         if( UpcEan.upcean_coupon != null)
-            barcodeProps.putBoolean("upcean_coupon", UpcEan.upcean_coupon);
+            barcodeProps.putString("upcean_coupon", UpcEan.upcean_coupon ? "true":"false");
         if( UpcEan.upcean_coupon_report != null)
             barcodeProps.putString("upcean_coupon_report", UpcEan.upcean_coupon_report.toString());
         if( UpcEan.upcean_ean_zero_extend != null)
-            barcodeProps.putBoolean("upcean_ean_zero_extend", UpcEan.upcean_ean_zero_extend);
+            barcodeProps.putString("upcean_ean_zero_extend", UpcEan.upcean_ean_zero_extend ? "true":"false");
         if( UpcEan.upcean_retry_count != null)
-            barcodeProps.putInt("upcean_retry_count", UpcEan.upcean_retry_count);
+            barcodeProps.putString("upcean_retry_count", UpcEan.upcean_retry_count.toString());
         if( UpcEan.upcean_security_level != null)
             barcodeProps.putString("upcean_security_level", UpcEan.upcean_security_level.toString());
         if( UpcEan.upcean_supplemental2 != null)
@@ -490,9 +489,9 @@ public class PluginScanner
         if( UpcEan.upcean_supplemental_mode != null)
             barcodeProps.putString("upcean_supplemental_mode", UpcEan.upcean_supplemental_mode.toString());
         if( UpcEan.upcean_linear_decode != null)
-            barcodeProps.putBoolean("upcean_linear_decode", UpcEan.upcean_linear_decode);
+            barcodeProps.putString("upcean_linear_decode", UpcEan.upcean_linear_decode ? "true":"false");
         if( UpcEan.upcean_random_weight_check_digit != null)
-            barcodeProps.putBoolean("upcean_random_weight_check_digit", UpcEan.upcean_random_weight_check_digit);
+            barcodeProps.putString("upcean_random_weight_check_digit", UpcEan.upcean_random_weight_check_digit ? "true":"false");
     }
 
     private void setupReaderParams(Bundle barcodeProps, boolean switchParams) {
@@ -567,16 +566,16 @@ public class PluginScanner
             barcodeProps.putString("code_id_type", ScanParams.code_id_type.toString());
 
         if( ScanParams.decode_haptic_feedback != null)
-            barcodeProps.putBoolean("decode_haptic_feedback", ScanParams.decode_haptic_feedback);
+            barcodeProps.putString("decode_haptic_feedback", ScanParams.decode_haptic_feedback ? "true":"false");
 
         if( ScanParams.decode_audio_feedback_uri != null)
             barcodeProps.putString("decode_audio_feedback_uri", ScanParams.decode_audio_feedback_uri.toString());
 
         if( ScanParams.decoding_led_feedback != null)
-            barcodeProps.putBoolean("decoding_led_feedback", ScanParams.decoding_led_feedback);
+            barcodeProps.putString("decoding_led_feedback", ScanParams.decoding_led_feedback ? "true":"false");
 
         if( ScanParams.good_decode_led_timer != null)
-            barcodeProps.putInt("good_decode_led_timer", ScanParams.good_decode_led_timer);
+            barcodeProps.putString("good_decode_led_timer", ScanParams.good_decode_led_timer.toString());
 
         if( ScanParams.volume_slider_type != null)
             barcodeProps.putString("volume_slider_type", ScanParams.volume_slider_type.toString());
@@ -585,7 +584,7 @@ public class PluginScanner
     private void setupMultiBarcode(Bundle barcodeProps)
     {
         if( MultiBarcode.multi_barcode_count != null)
-            barcodeProps.putInt("multi_barcode_count", MultiBarcode.multi_barcode_count);
+            barcodeProps.putString("multi_barcode_count", MultiBarcode.multi_barcode_count.toString());
     }
 
     private void setupOtherParameters(Bundle barcodeProps)
@@ -594,16 +593,16 @@ public class PluginScanner
             barcodeProps.putString("trigger-wakeup", trigger_wakeup ? "true" : "false");
 
         if( MarginLess.code128_enable_marginless_decode != null)
-            barcodeProps.putBoolean("decoding_led_feedback", MarginLess.code128_enable_marginless_decode);
+            barcodeProps.putString("decoding_led_feedback", MarginLess.code128_enable_marginless_decode ? "true":"false");
 
         if( MarginLess.code39_enable_marginless_decode != null)
-            barcodeProps.putBoolean("code39_enable_marginless_decode", MarginLess.code39_enable_marginless_decode);
+            barcodeProps.putString("code39_enable_marginless_decode", MarginLess.code39_enable_marginless_decode ? "true":"false");
 
         if( MarginLess.upc_enable_marginless_decode != null)
-            barcodeProps.putBoolean("upc_enable_marginless_decode", MarginLess.upc_enable_marginless_decode);
+            barcodeProps.putString("upc_enable_marginless_decode", MarginLess.upc_enable_marginless_decode ? "true":"false");
 
         if( MarginLess.i20f5_enable_marginless_decode != null)
-            barcodeProps.putBoolean("i20f5_enable_marginless_decode", MarginLess.i20f5_enable_marginless_decode);
+            barcodeProps.putString("i20f5_enable_marginless_decode", MarginLess.i20f5_enable_marginless_decode ? "true":"false");
     }
 
     /**
@@ -648,6 +647,9 @@ public class PluginScanner
 
         // Multibarcode
         setupMultiBarcode(barcodeProps);
+
+        // Other params
+        setupOtherParameters(barcodeProps);
 
 
         return barcodeProps;
