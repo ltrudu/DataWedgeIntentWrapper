@@ -9,9 +9,15 @@ buildscript {
         //    url  "https://dl.bintray.com/ltrudu/Zebra_Open_Source_Tools_And_Libraries"
         //}
         mavenCentral()
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.1'
+        classpath 'com.android.tools.build:gradle:4.2.0'
+        classpath 'com.github.dcendents:android-maven-plugin:1.2'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+
         //classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -20,12 +26,15 @@ buildscript {
 
 }
 
+
 allprojects {
     repositories {
         maven { url 'https://jitpack.io' }
         google()
         mavenCentral()
-
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
         //maven {
         //    url  "https://dl.bintray.com/ltrudu/Zebra_Open_Source_Tools_And_Libraries"
         //}
