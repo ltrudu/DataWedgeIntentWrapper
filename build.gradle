@@ -20,9 +20,8 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         //maven { url 'https://jitpack.io' }
-        google()
+        //google()
         //maven {
         //    url  "https://dl.bintray.com/ltrudu/Zebra_Open_Source_Tools_And_Libraries"
         //}
