@@ -9,4 +9,3 @@ dependencyResolutionManagement {
 }
 */
 include  ':datawedgeprofileintentswrapper'
-rootProject.name = "datawedgeprofileintentswrapper"
