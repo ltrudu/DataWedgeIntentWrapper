@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DataWedgeIntentWrapper.iml" filepath="$PROJECT_DIR$/.idea/modules/DataWedgeIntentWrapper.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/datawedgeprofileintentswrapper/DataWedgeIntentWrapper.datawedgeprofileintentswrapper.iml" filepath="$PROJECT_DIR$/.idea/modules/datawedgeprofileintentswrapper/DataWedgeIntentWrapper.datawedgeprofileintentswrapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/datawedgeprofileintentswrapper/DataWedgeIntentWrapper.datawedgeprofileintentswrapper.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/datawedgeprofileintentswrapper/DataWedgeIntentWrapper.datawedgeprofileintentswrapper.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/datawedgeprofileintentswrapper/DataWedgeIntentWrapper.datawedgeprofileintentswrapper.main.iml" filepath="$PROJECT_DIR$/.idea/modules/datawedgeprofileintentswrapper/DataWedgeIntentWrapper.datawedgeprofileintentswrapper.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/datawedgeprofileintentswrapper/DataWedgeIntentWrapper.datawedgeprofileintentswrapper.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/datawedgeprofileintentswrapper/DataWedgeIntentWrapper.datawedgeprofileintentswrapper.unitTest.iml" />
     </modules>
   </component>
 </project>

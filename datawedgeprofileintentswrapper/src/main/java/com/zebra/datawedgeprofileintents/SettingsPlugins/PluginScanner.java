@@ -1,6 +1,8 @@
 package com.zebra.datawedgeprofileintents.SettingsPlugins;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.zebra.datawedgeprofileenums.SC_E_1D_MARGINLESS_DECODE_EFFORT_LEVEL;
 import com.zebra.datawedgeprofileenums.SC_E_AIM_MODE;
@@ -30,6 +32,7 @@ import com.zebra.datawedgeprofileenums.SC_E_UPCEAN_SECURITY_LEVEL;
 import com.zebra.datawedgeprofileenums.SC_E_UPCEAN_SUPPLEMENTAL_MODE;
 import com.zebra.datawedgeprofileenums.SC_E_VOLUME_SLIDER_TYPE;
 import com.zebra.datawedgeprofileintents.DWProfileSetConfigSettings;
+import com.zebra.datawedgeprofileintents.DataWedgeConstants;
 
 import androidx.annotation.RequiresPermission;
 
@@ -167,6 +170,7 @@ public class PluginScanner
         public Boolean decoder_i2of5_redundancy = null;
         public Boolean decoder_i2of5_report_check_digit = null;
         public SC_E_SECURITY_LEVEL decoder_i2of5_security_level = null;
+        @Deprecated
         public Boolean decoder_i2of5_convert_to_ean13 = null;
         public Boolean decoder_itf14_convert_to_ean13 = null;
 
@@ -294,8 +298,7 @@ public class PluginScanner
     public Boolean trigger_wakeup = null;
 
 
-    public Bundle getBarcodePluginBundleForSetConfig(boolean resetConfig)
-    {
+    public Bundle getBarcodePluginBundleForSetConfig(boolean resetConfig) throws Exception {
         // Barcode plugin configuration
         Bundle barcodePluginConfig = new Bundle();
         barcodePluginConfig.putString("PLUGIN_NAME", "BARCODE");
@@ -309,8 +312,7 @@ public class PluginScanner
         return barcodePluginConfig;
     }
     
-    private void setupScannerPlugin(Bundle barcodeProps)
-    {
+    private void setupScannerPlugin(Bundle barcodeProps) throws Exception {
         barcodeProps.putString("scanner_input_enabled", scanner_input_enabled ? "true" : "false");
 
         // Use this for Datawedge < 6.7
@@ -388,8 +390,7 @@ public class PluginScanner
         if(Decoders.decoder_webcode                                 != null            ) barcodeProps.putString(   "decoder_webcode"                          , Decoders.decoder_webcode                         ? "true":"false");
     }
 
-    private  void setupDecodersParams(Bundle barcodeProps)
-    {
+    private  void setupDecodersParams(Bundle barcodeProps) throws Exception {
         if(DecodersParams.decoder_codabar_clsi_editing                    != null   ) barcodeProps.putString(   "decoder_codabar_clsi_editing"             , DecodersParams.decoder_codabar_clsi_editing             ? "true":"false");
         if(DecodersParams.decoder_codabar_length1                         != null   ) barcodeProps.putString(       "decoder_codabar_length1"                  , DecodersParams.decoder_codabar_length1.toString()                  );
         if(DecodersParams.decoder_codabar_length2                         != null   ) barcodeProps.putString(       "decoder_codabar_length2"                  , DecodersParams.decoder_codabar_length2.toString()                  );
@@ -437,7 +438,13 @@ public class PluginScanner
         if(DecodersParams.decoder_i2of5_redundancy                        != null   ) barcodeProps.putString(   "decoder_i2of5_redundancy"                 , DecodersParams.decoder_i2of5_redundancy                 ? "true":"false");
         if(DecodersParams.decoder_i2of5_report_check_digit                != null   ) barcodeProps.putString(   "decoder_i2of5_report_check_digit"         ,  DecodersParams.decoder_i2of5_report_check_digit ? "true" : "false"        );
         if(DecodersParams.decoder_i2of5_security_level                    != null   ) barcodeProps.putString(    "decoder_i2of5_security_level"             , DecodersParams.decoder_i2of5_security_level.toString()             );
-        if(DecodersParams.decoder_i2of5_convert_to_ean13                  != null   ) barcodeProps.putString(   "decoder_i2of5_convert_to_ean13"           , DecodersParams.decoder_i2of5_convert_to_ean13           ? "true":"false");
+
+        if(DecodersParams.decoder_i2of5_convert_to_ean13                  != null   )
+        {
+            Log.e(DataWedgeConstants.TAG, "decoder_i2of5_convert_to_ean13 is deprecated. Contact your developer for code update. It has been replaced by decoder_itf14_convert_to_ean13");
+            throw new Exception("decoder_i2of5_convert_to_ean13 is deprecated. Contact your developer for code update. It has been replaced by decoder_itf14_convert_to_ean13");
+        }
+
         if(DecodersParams.decoder_itf14_convert_to_ean13                  != null   ) barcodeProps.putString(   "decoder_itf14_convert_to_ean13"           , DecodersParams.decoder_itf14_convert_to_ean13           ? "true":"false");
         if(DecodersParams.decoder_matrix_2of5_length1                     != null   ) barcodeProps.putString(       "decoder_matrix_2of5_length1"              , DecodersParams.decoder_matrix_2of5_length1.toString()              );
         if(DecodersParams.decoder_matrix_2of5_length2                     != null   ) barcodeProps.putString(       "decoder_matrix_2of5_length2"              , DecodersParams.decoder_matrix_2of5_length2.toString()              );
@@ -625,8 +632,7 @@ public class PluginScanner
      * Use this method if you want to force all parameters to be switched
      * @return
      */
-    public Bundle getBarcodePluginBundleForSwitchParams()
-    {
+    public Bundle getBarcodePluginBundleForSwitchParams() throws Exception {
         // Pass everything to the bundle
         Bundle barcodeProps = new Bundle();
 

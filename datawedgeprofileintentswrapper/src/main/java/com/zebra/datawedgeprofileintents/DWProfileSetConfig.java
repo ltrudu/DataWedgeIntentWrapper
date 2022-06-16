@@ -3,6 +3,7 @@ package com.zebra.datawedgeprofileintents;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Pair;
+import android.widget.Toast;
 
 import com.zebra.datawedgeprofileenums.MB_E_CONFIG_MODE;
 import com.zebra.datawedgeprofileintents.SettingsPlugins.BaseSettings;
@@ -85,7 +86,13 @@ public class DWProfileSetConfig extends DWProfileCommandBase {
         ArrayList<Bundle> pluginConfigs = new ArrayList<Bundle>();
 
         // Add barcode plugin config
-        pluginConfigs.add(settings.ScannerPlugin.getBarcodePluginBundleForSetConfig(true));
+        try {
+            pluginConfigs.add(settings.ScannerPlugin.getBarcodePluginBundleForSetConfig(true));
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG);
+            System.exit(0);
+        }
 
         // Add keystroke plugin config (disabled in this case)
         pluginConfigs.add(settings.KeystrokePlugin.getKeyStrokePluginBundle(true));

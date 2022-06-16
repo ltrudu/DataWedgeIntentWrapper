@@ -4,6 +4,8 @@ package com.zebra.datawedgeprofileintents;
  * Created by Trudu Laurent on 22/11/2016.
  */
 public class DataWedgeConstants {
+
+    public static final String TAG = "DWIWrap";
     // Let's define some intent strings
     // This intent string contains the source of the data as a string
     public static final String SOURCE_TAG = "com.motorolasolutions.emdk.datawedge.source";
