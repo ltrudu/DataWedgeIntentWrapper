@@ -62,7 +62,6 @@ public class DWSynchronousMethodsNT {
                 }
                 else
                     mResults = null;
-                mHasFinished = true;
                 
             } catch (Exception e) {
                 e.printStackTrace();
