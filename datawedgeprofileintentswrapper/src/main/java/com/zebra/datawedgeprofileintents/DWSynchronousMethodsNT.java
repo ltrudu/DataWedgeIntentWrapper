@@ -123,7 +123,7 @@ public class DWSynchronousMethodsNT {
             }
         }
 
-        if (synchronizedThread.isAlive()) // Cas du timeout, on tue le thread
+        if (synchronizedThread.isAlive()) // In case of timeout : stop the thread
             synchronizedThread.interrupt();
 
         return synchronousNTRunnable.mResults;
