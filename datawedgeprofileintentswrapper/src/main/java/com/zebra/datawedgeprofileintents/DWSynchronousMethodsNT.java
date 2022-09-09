@@ -65,10 +65,10 @@ public class DWSynchronousMethodsNT {
                 mHasFinished = true;
                 
             } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
                 // Even if an error occurs, we must terminate the action to avoid waiting an infinite loop
                 mHasFinished = true;
-
-                e.printStackTrace();
             }
         }
     }
