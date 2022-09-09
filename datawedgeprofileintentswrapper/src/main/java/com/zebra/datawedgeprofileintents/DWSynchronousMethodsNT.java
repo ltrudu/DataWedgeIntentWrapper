@@ -1,14 +1,12 @@
 package com.zebra.datawedgeprofileintents;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.util.Pair;
 
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeoutException;
 
 public class DWSynchronousMethodsNT {
     
@@ -38,6 +36,8 @@ public class DWSynchronousMethodsNT {
         private Context mContext;
         public Pair<DWSynchronousMethods.EResults, String> mResults = null;
         public boolean mHasFinished = false;
+        private int ExecutionTimeoutMs = 3 * 1000;
+
 
         public SynchronousNTRunnable(Context context, String methodName, Object param, Class<?> paramClass)
         {
@@ -65,9 +65,11 @@ public class DWSynchronousMethodsNT {
                 mHasFinished = true;
                 
             } catch (Exception e) {
+                // Even if an error occurs, we must terminate the action to avoid waiting an infinite loop
+                mHasFinished = true;
+
                 e.printStackTrace();
             }
-
         }
     }
 
@@ -81,12 +83,13 @@ public class DWSynchronousMethodsNT {
         return mLastMessage;
     }
 
-    public Pair<DWSynchronousMethods.EResults,String> runInNewThread(String methodName, Object param, Class<?> paramClass)
-    {
+    public Pair<DWSynchronousMethods.EResults,String> runInNewThread(String methodName, Object param, Class<?> paramClass) {
         SynchronousNTRunnable synchronousNTRunnable = new SynchronousNTRunnable(mContext, methodName, param, paramClass);
         Thread synchronizedThread = new Thread(synchronousNTRunnable);
         synchronizedThread.start();
-        while (synchronousNTRunnable.mHasFinished == false) {
+
+        int totalElapsedMs = 0;
+        while (!synchronousNTRunnable.mHasFinished) {
             try {
                 // Sorry but we are not at school anymore...
                 // And this is the only method I found to prevent ANR when
@@ -97,12 +100,32 @@ public class DWSynchronousMethodsNT {
                 // If you have a better solution, you are welcome
                 // to do a PULL request on the code.
                 Thread.sleep(mSleepTimer);
+
+                // However, ANR still occurs. Notably on TC52X. So we add a timeout.
+                totalElapsedMs += mSleepTimer;
+                if (totalElapsedMs > synchronousNTRunnable.ExecutionTimeoutMs)
+                    throw new TimeoutException("Unable to get thread result in " + synchronousNTRunnable.ExecutionTimeoutMs + "ms");
+
+            } catch (InterruptedException e) {
+                // Ré-interruption to current thread if InterruptedException
+                Thread.currentThread().interrupt();
+                e.printStackTrace();
+            } catch (TimeoutException e) {
+                e.printStackTrace();
+                break; // Exit loop on timeout
             } catch (Throwable e) {
                 // on android this may not be allowed, that's why we
                 // catch throwable the wait should be very short because we are
                 // just waiting for the bind of the socket
+
+                // However, we want to know if a other crash occurs. So we log it.
+                e.printStackTrace();
             }
         }
+
+        if (synchronizedThread.isAlive()) // Cas du timeout, on tue le thread
+            synchronizedThread.interrupt();
+
         return synchronousNTRunnable.mResults;
     }
 
