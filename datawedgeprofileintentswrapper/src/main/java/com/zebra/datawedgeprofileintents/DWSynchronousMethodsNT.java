@@ -36,7 +36,7 @@ public class DWSynchronousMethodsNT {
         private Context mContext;
         public Pair<DWSynchronousMethods.EResults, String> mResults = null;
         public boolean mHasFinished = false;
-        private int ExecutionTimeoutMs = 3 * 1000;
+        private int mExecutionTimeoutMs = 3 * 1000;
 
 
         public SynchronousNTRunnable(Context context, String methodName, Object param, Class<?> paramClass)
@@ -102,8 +102,8 @@ public class DWSynchronousMethodsNT {
 
                 // However, ANR still occurs. Notably on TC52X. So we add a timeout.
                 totalElapsedMs += mSleepTimer;
-                if (totalElapsedMs > synchronousNTRunnable.ExecutionTimeoutMs)
-                    throw new TimeoutException("Unable to get thread result in " + synchronousNTRunnable.ExecutionTimeoutMs + "ms");
+                if (totalElapsedMs > synchronousNTRunnable.mExecutionTimeoutMs)
+                    throw new TimeoutException("Unable to get thread result in " + synchronousNTRunnable.mExecutionTimeoutMs + "ms");
 
             } catch (InterruptedException e) {
                 // Ré-interruption to current thread if InterruptedException
