@@ -504,7 +504,7 @@ public class PluginScanner
     private void setupReaderParams(Bundle barcodeProps, boolean switchParams) {
 
         // This parameter is not supported when switching parameters
-        if(switchParams == false && ( ReaderParams.aim_mode != null))
+        if(ReaderParams.aim_mode != null)
             barcodeProps.putString("aim_mode", ReaderParams.aim_mode.toString());
 
         if( ReaderParams.charset_name != null)
