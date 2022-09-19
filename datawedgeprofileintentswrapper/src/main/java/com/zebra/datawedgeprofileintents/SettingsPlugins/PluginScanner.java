@@ -644,6 +644,7 @@ public class PluginScanner
         // Use this for Datawedge < 6.7
         //barcodeProps.putString("scanner_selection", "AUTO");
         // Use this for Datawedge >= 6.7
+        barcodeProps.putString("scanner_selection",scanner_selection_by_identifier.toString());
         barcodeProps.putString("scanner_selection_by_identifier",scanner_selection_by_identifier.toString());
 
 
