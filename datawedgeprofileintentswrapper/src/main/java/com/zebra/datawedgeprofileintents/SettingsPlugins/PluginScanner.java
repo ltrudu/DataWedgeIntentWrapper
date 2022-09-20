@@ -46,7 +46,7 @@ public class PluginScanner
     Useful to control when scan should be available in an application
     Default is true
      */
-    public Boolean scanner_input_enabled = true;
+    public Boolean scanner_input_enabled = null;
 
     /*
     Use it to force the scanner selection
@@ -59,7 +59,7 @@ public class PluginScanner
      Set the scanner you want to use for this profile
      Default is internal imager
     */
-    public SC_E_SCANNER_IDENTIFIER scanner_selection_by_identifier = SC_E_SCANNER_IDENTIFIER.AUTO;
+    public SC_E_SCANNER_IDENTIFIER scanner_selection_by_identifier = null;
 
 
     public class Decoders {
@@ -313,7 +313,12 @@ public class PluginScanner
     }
     
     private void setupScannerPlugin(Bundle barcodeProps) throws Exception {
-        barcodeProps.putString("scanner_input_enabled", scanner_input_enabled ? "true" : "false");
+        if(scanner_input_enabled != null)
+            barcodeProps.putString("scanner_input_enabled", scanner_input_enabled ? "true" : "false");
+        else
+        {
+            barcodeProps.putString("scanner_input_enabled", "true");
+        }
 
         // Use this for Datawedge < 6.7
         //barcodeProps.putString("scanner_selection", scanner_selection);
@@ -321,7 +326,11 @@ public class PluginScanner
         // Use this for Datawedge < 6.7
         //barcodeProps.putString("scanner_selection", "AUTO");
         // Use this for Datawedge >= 6.7
-        barcodeProps.putString("scanner_selection_by_identifier",scanner_selection_by_identifier.toString());
+        if(scanner_selection_by_identifier != null)
+            barcodeProps.putString("scanner_selection_by_identifier",scanner_selection_by_identifier.toString());
+        else
+            barcodeProps.putString("scanner_selection_by_identifier",SC_E_SCANNER_IDENTIFIER.AUTO.toString());
+
 
         // Setup decoders
         setupDecoders(barcodeProps);
@@ -613,22 +622,6 @@ public class PluginScanner
     }
 
     /**
-     * Use this method if you want to switch between two knowns parameters
-     * @param configToBeCompared
-     * @return
-     */
-    public Bundle getBarcodePluginBundleForSwitchParams(PluginScanner configToBeCompared)
-    {
-        // Pass everything to the bundle
-        Bundle barcodeProps = new Bundle();
-
-        // Setup Reader Params
-        setupReaderParams(barcodeProps, true);
-
-        return barcodeProps;
-    }
-
-    /**
      * Use this method if you want to force all parameters to be switched
      * @return
      */
@@ -636,7 +629,8 @@ public class PluginScanner
         // Pass everything to the bundle
         Bundle barcodeProps = new Bundle();
 
-        barcodeProps.putString("scanner_input_enabled", scanner_input_enabled ? "true" : "false");
+        if(scanner_input_enabled != null)
+            barcodeProps.putString("scanner_input_enabled", scanner_input_enabled ? "true" : "false");
 
         // Use this for Datawedge < 6.7
         //barcodeProps.putString("scanner_selection", scanner_selection);
@@ -644,7 +638,8 @@ public class PluginScanner
         // Use this for Datawedge < 6.7
         //barcodeProps.putString("scanner_selection", "AUTO");
         // Use this for Datawedge >= 6.7
-        barcodeProps.putString("scanner_selection_by_identifier",scanner_selection_by_identifier.toString());
+        if(scanner_selection_by_identifier != null)
+            barcodeProps.putString("scanner_selection_by_identifier",scanner_selection_by_identifier.toString());
 
 
         // Setup decoders
