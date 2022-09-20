@@ -504,7 +504,7 @@ public class PluginScanner
     private void setupReaderParams(Bundle barcodeProps, boolean switchParams) {
 
         // This parameter is not supported when switching parameters
-        if(switchParams == false && ( ReaderParams.aim_mode != null))
+        if(ReaderParams.aim_mode != null)
             barcodeProps.putString("aim_mode", ReaderParams.aim_mode.toString());
 
         if( ReaderParams.charset_name != null)
@@ -635,6 +635,17 @@ public class PluginScanner
     public Bundle getBarcodePluginBundleForSwitchParams() throws Exception {
         // Pass everything to the bundle
         Bundle barcodeProps = new Bundle();
+
+        barcodeProps.putString("scanner_input_enabled", scanner_input_enabled ? "true" : "false");
+
+        // Use this for Datawedge < 6.7
+        //barcodeProps.putString("scanner_selection", scanner_selection);
+
+        // Use this for Datawedge < 6.7
+        //barcodeProps.putString("scanner_selection", "AUTO");
+        // Use this for Datawedge >= 6.7
+        barcodeProps.putString("scanner_selection_by_identifier",scanner_selection_by_identifier.toString());
+
 
         // Setup decoders
         setupDecoders(barcodeProps);
