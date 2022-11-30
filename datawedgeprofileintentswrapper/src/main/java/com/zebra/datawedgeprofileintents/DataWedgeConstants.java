@@ -48,10 +48,10 @@ public class DataWedgeConstants {
 
     public static final String NOTIFICATION_TYPE_SCANNER_STATUS = "SCANNER_STATUS";
     public static final String SCAN_STATUS_WAITING = "WAITING";
-    public static final String SCAN_STATUS_SCANNING  = "SCANNING ";
+    public static final String SCAN_STATUS_SCANNING  = "SCANNING";
     public static final String SCAN_STATUS_CONNECTED = "CONNECTED";
-    public static final String SCAN_STATUS_DISCONNECTED  = "DISCONNECTED ";
-    public static final String SCAN_STATUS_DISABLED  = "DISABLED ";
+    public static final String SCAN_STATUS_DISCONNECTED  = "DISCONNECTED";
+    public static final String SCAN_STATUS_DISABLED  = "DISABLED";
     public static final String NOTIFICATION_TYPE_PROFILE_SWITCH = "PROFILE_SWITCH";
 
     public static final String ACTION_EXTRA_REGISTER_FOR_NOTIFICATION = "com.symbol.datawedge.api.REGISTER_FOR_NOTIFICATION";
