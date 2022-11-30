@@ -23,8 +23,11 @@ import com.zebra.datawedgeprofileenums.SC_E_MSI_CHECK_DIGIT_SCHEME;
 import com.zebra.datawedgeprofileenums.SC_E_PICKLIST_MODE;
 import com.zebra.datawedgeprofileenums.SC_E_POOR_QUALITY_DECODE_LEVEL;
 import com.zebra.datawedgeprofileenums.SC_E_PREAMBLE;
+import com.zebra.datawedgeprofileenums.SC_E_PRESENTATION_MODE_SENSITIVITY;
+import com.zebra.datawedgeprofileenums.SC_E_READER_MODE;
 import com.zebra.datawedgeprofileenums.SC_E_SCANNER_IDENTIFIER;
 import com.zebra.datawedgeprofileenums.SC_E_SCANNINGMODE;
+import com.zebra.datawedgeprofileenums.SC_E_SCENE_DETECT_QUALIFIER;
 import com.zebra.datawedgeprofileenums.SC_E_SECURITY_LEVEL;
 import com.zebra.datawedgeprofileenums.SC_E_UPCEAN_BOOKLAND_FORMAT;
 import com.zebra.datawedgeprofileenums.SC_E_UPCEAN_COUPON_REPORT;
@@ -234,6 +237,9 @@ public class PluginScanner
         /****************************************/
         /*              Reader parameter        */
         /****************************************/
+        public SC_E_PRESENTATION_MODE_SENSITIVITY presentation_mode_sensitivity = null;
+        public SC_E_READER_MODE reader_mode = null;
+        public SC_E_SCENE_DETECT_QUALIFIER scene_detect_qualifier = null;
         public SC_E_AIM_MODE aim_mode = null;
         public SC_E_CHARSET_NAME charset_name = null;
         public SC_E_ILLUMINATION_MODE illumination_mode = null;
@@ -511,8 +517,16 @@ public class PluginScanner
     }
 
     private void setupReaderParams(Bundle barcodeProps, boolean switchParams) {
+        if(ReaderParams.presentation_mode_sensitivity != null)
+            barcodeProps.putString("presentation_mode_sensitivity", ReaderParams.presentation_mode_sensitivity.toString());
 
-        // This parameter is not supported when switching parameters
+        if(ReaderParams.reader_mode != null)
+            barcodeProps.putString("reader_mode", ReaderParams.reader_mode.toString());
+
+        if(ReaderParams.scene_detect_qualifier != null)
+            barcodeProps.putString("presentation_mode_sensitivity", ReaderParams.scene_detect_qualifier.toString());
+
+        // WARNING : This parameter is not supported when switching parameters
         if(ReaderParams.aim_mode != null)
             barcodeProps.putString("aim_mode", ReaderParams.aim_mode.toString());
 
