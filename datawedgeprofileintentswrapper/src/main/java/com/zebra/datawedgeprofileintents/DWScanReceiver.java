@@ -152,6 +152,8 @@ public class DWScanReceiver {
             if(mBroadcastReceiverThreadLooper != null)
                 mBroadcastReceiverThreadLooper.quit();
             mBroadcastReceiverThreadLooper = null;
+            if(mBroadcastReceiverThread != null)
+                mBroadcastReceiverThread.quit();
             mBroadcastReceiverThread = null;
             mBroadcastReceiverHandler = null;
         }
