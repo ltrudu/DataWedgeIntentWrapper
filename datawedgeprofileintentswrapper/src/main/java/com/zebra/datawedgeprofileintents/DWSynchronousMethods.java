@@ -20,6 +20,7 @@ public class DWSynchronousMethods {
 
     private String mLastMessage = "";
     private EResults mLastResult = EResults.NONE;
+    private boolean mIsDWPluginEnabledResult = false;
     private List<DWEnumerateScanners.Scanner> mEnumerateScannersReturnList = null;
     private CountDownLatch mJobDoneLatch = null;
     private Context mContext = null;
@@ -449,6 +450,76 @@ public class DWSynchronousMethods {
             return new Pair<>(EResults.FAILED, "profileExists: Exception while waiting for CountDownLatch : " + e.getMessage());
         }
     }
+
+    public Pair<EResults, String> isDWPluginEnabled()
+    {
+        return isDWPluginEnabled(mContext.getPackageName());
+    }
+
+    public Pair<EResults, String> isDWPluginEnabled(final String profileName)
+    {
+        if(mJobDoneLatch != null)
+        {
+            return new Pair<>(EResults.FAILED, "isDWPluginEnabled: Error, a job is already running in background. Please wait for it to finish or timeout.");
+        }
+
+        mJobDoneLatch = new CountDownLatch(1);
+
+        DWProfileBaseSettings settings = new DWProfileBaseSettings()
+        {{
+            mProfileName = profileName;
+        }};
+
+        try
+        {
+            Looper.prepare();
+        }
+        catch(Exception e)
+        {
+        }
+
+        DWScannerPluginStatus dwScannerPluginStatus = new DWScannerPluginStatus(mContext);
+        dwScannerPluginStatus.execute(settings, new DWScannerPluginStatus.onScannerPluginStatus() {
+            @Override
+            public void result(String profileName, boolean isEnabled) {
+                if(isEnabled)
+                {
+                    mLastMessage = "true";
+                    mLastResult = EResults.SUCCEEDED;
+
+                }
+                else
+                {
+                    mLastMessage = "false";
+                    mLastResult = EResults.FAILED;
+                }
+                mJobDoneLatch.countDown();
+            }
+
+            @Override
+            public void timeOut(String profileName) {
+                mLastMessage = "isDWPluginEnabled: timeout while trying to enable check if profile exists: " + profileName;
+                mLastResult = EResults.TIMEOUT;
+                mJobDoneLatch.countDown();
+            }
+        });
+
+
+        try {
+            mJobDoneLatch.await();
+            mJobDoneLatch = null;
+            return new Pair<>(mLastResult, mLastMessage);
+        } catch (InterruptedException e) {
+            if(mJobDoneLatch != null)
+            {
+                while(mJobDoneLatch.getCount() > 0)
+                    mJobDoneLatch.countDown();
+                mJobDoneLatch = null;
+            }
+            return new Pair<>(EResults.FAILED, "isDWPluginEnabled: Exception while waiting for CountDownLatch : " + e.getMessage());
+        }
+    }
+
 
     public Pair<EResults, String> deleteProfile()
     {
