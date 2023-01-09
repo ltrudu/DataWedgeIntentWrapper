@@ -86,6 +86,7 @@ public class PluginScanner
         public Boolean decoder_ean13 = null;
         public Boolean decoder_ean8 = null;
         public Boolean decoder_gs1_databar = null;
+        public Boolean decoder_gs1_qrcode = null;
         public Boolean decoder_hanxin = null;
         public Boolean decoder_i2of5 = null;
         public Boolean decoder_japanese_postal = null;
@@ -380,6 +381,7 @@ public class PluginScanner
         if(Decoders.decoder_ean13                                   != null            ) barcodeProps.putString(   "decoder_ean13"                            , Decoders.decoder_ean13                           ? "true":"false");
         if(Decoders.decoder_ean8                                    != null            ) barcodeProps.putString(   "decoder_ean8"                             , Decoders.decoder_ean8                            ? "true":"false");
         if(Decoders.decoder_gs1_databar                             != null            ) barcodeProps.putString(   "decoder_gs1_databar"                      , Decoders.decoder_gs1_databar                     ? "true":"false");
+        if(Decoders.decoder_gs1_qrcode                             != null            ) barcodeProps.putString(   "decoder_gs1_qrcode"                        , Decoders.decoder_gs1_qrcode                     ? "true":"false");
         if(Decoders.decoder_hanxin                                  != null            ) barcodeProps.putString(   "decoder_hanxin"                           , Decoders.decoder_hanxin                          ? "true":"false");
         if(Decoders.decoder_i2of5                                   != null            ) barcodeProps.putString(   "decoder_i2of5"                            , Decoders.decoder_i2of5                           ? "true":"false");
         if(Decoders.decoder_japanese_postal                         != null            ) barcodeProps.putString(   "decoder_japanese_postal"                  , Decoders.decoder_japanese_postal                 ? "true":"false");
