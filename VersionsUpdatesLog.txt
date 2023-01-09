@@ -1,0 +1,2 @@
+V11.1:
+Added decoder_gs1_qrcode to the Decoders
