@@ -1,10 +1,16 @@
 #-----------------------------------------------------
-# README IF YOU UPDATED TO V11 from a previous version
+# README IF YOU UPDATED TO V11 FROM A PREVIOUS VERSION
+
 There is a minor API break in the V11.
+
 The following constants of the Scanner Status class have been modified:
+
 SCAN_STATUS_SCANNING, SCAN_STATUS_DISABLED, SCAN_STATUS_DISCONNECTED
+
 The space at the end of the string message has been removed.
+
 You can check the change here:
+
 https://github.com/ltrudu/DataWedgeIntentWrapper/commit/a46e32dc5b2cb707cc8c8ae91be45ebaf3257046
 
 #-----------------------------------------------------
