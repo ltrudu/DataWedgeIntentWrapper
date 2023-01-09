@@ -1,2 +1,44 @@
+--------------------------------------------------
 V11.1:
-Added decoder_gs1_qrcode to the Decoders
+--------------------------------------------------
+Added decoder_gs1_qrcode to the Decoders.
+
+--------------------------------------------------
+V11:
+--------------------------------------------------
+There is a minor API break in the V11.
+
+The following constants of the Scanner Status class have been modified:
+
+SCAN_STATUS_SCANNING, SCAN_STATUS_DISABLED, SCAN_STATUS_DISCONNECTED
+
+The space at the end of the string message has been removed.
+
+You can check the change here:
+
+https://github.com/ltrudu/DataWedgeIntentWrapper/commit/a46e32dc5b2cb707cc8c8ae91be45ebaf3257046
+
+--------------------------------------------------
+V11.0 Alpha 4
+--------------------------------------------------
+Added isDWPluginEnabled to DWSynchronous methods
+
+--------------------------------------------------
+V11.0 Alpha 3
+--------------------------------------------------
+Fixed ScannerReceiver receiver thread clean up.
+
+--------------------------------------------------
+V6.7.9.5
+--------------------------------------------------
+Refactor DWSynchronousMethodsNT
+Adding Kotlin support
+Update to Gradle 7.3.3
+
+--------------------------------------------------
+V6.7.9.3
+--------------------------------------------------
+Changed behaviour of scanner_input_enabled and scanner_selection_by_identifier to allow add or remove of these parameters in the switch config method.
+
+
+
