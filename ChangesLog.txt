@@ -1,4 +1,9 @@
 --------------------------------------------------
+V11.2:
+--------------------------------------------------
+Fixed possible calls on null references and made the code more robust in DWScannerPluginEnable
+
+--------------------------------------------------
 V11.1:
 --------------------------------------------------
 Added decoder_gs1_qrcode to the Decoders.
