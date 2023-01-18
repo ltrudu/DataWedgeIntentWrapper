@@ -1,3 +1,10 @@
+# New ChangesLog.txt file
+https://github.com/ltrudu/DataWedgeIntentWrapper/blob/master/ChangesLog.txt
+
+This file will contain all the changes that occured between all versions.
+
+It will be updated everytime a new version is released.
+
 #-----------------------------------------------------
 # README IF YOU UPDATED TO V11 FROM A PREVIOUS VERSION
 
