@@ -72,11 +72,13 @@ public class DWScannerPluginEnable extends DWProfileCommandBase {
             mScannerCallback = new DWStatusScannerCallback() {
                 @Override
                 public void result(String status) {
-                    if(status != null && status.equalsIgnoreCase(DataWedgeConstants.SCAN_STATUS_WAITING) &&
-                            myLocalCallback != null)
+                    if(status != null && status.equalsIgnoreCase(DataWedgeConstants.SCAN_STATUS_WAITING))
                     {
-                        myLocalCallback.executeResults();
+                        if(myLocalCallback != null) {
+                            myLocalCallback.executeResults();
+                        }
                         mScannerStatusChecker.stop();
+                        mScannerStatusChecker.unRegisterNotificationReceiver();
                         mScannerStatusChecker = null;
                     }
                     else if(myLocalCallback != null && myLocalCallback.result != null && myLocalCallback.result.equalsIgnoreCase("TIMEOUT"))
