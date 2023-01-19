@@ -2,6 +2,7 @@
 V11.2:
 --------------------------------------------------
 Fixed possible calls on null references and made the code more robust in DWScannerPluginEnable
+Fixed a bug when the ScanReceiver was not unregistered if used in non threaded mode
 
 --------------------------------------------------
 V11.1:
