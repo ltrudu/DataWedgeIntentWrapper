@@ -92,7 +92,8 @@ public class DWStatusScanner {
 
     void registerNotificationReceiver() {
         //to register the broadcast receiver
-        broadcastReceiverThread = new HandlerThread(mStatusSettings.mPackageName + ".NOTIFICATION.THREAD");//Create a thread for BroadcastReceiver
+        if(broadcastReceiverThread == null)
+            broadcastReceiverThread = new HandlerThread(mStatusSettings.mPackageName + ".NOTIFICATION.THREAD");//Create a thread for BroadcastReceiver
         broadcastReceiverThread.start();
 
         broadcastReceiverThreadLooper = broadcastReceiverThread.getLooper();
@@ -105,13 +106,25 @@ public class DWStatusScanner {
 
     void unRegisterNotificationReceiver() {
         //to unregister the broadcast receiver
-        mContext.unregisterReceiver(mStatusBroadcastReceiver); //Android method
+        try {
+            mContext.unregisterReceiver(mStatusBroadcastReceiver); //Android method
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
         if(broadcastReceiverThreadLooper != null)
         {
-            broadcastReceiverThreadLooper.quit();
-            broadcastReceiverThreadLooper = null;
-            broadcastReceiverThread = null;
-            broadcastReceiverHandler = null;
+            try {
+                broadcastReceiverThreadLooper.quit();
+                broadcastReceiverThreadLooper = null;
+                broadcastReceiverThread = null;
+                broadcastReceiverHandler = null;
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 }
