@@ -135,8 +135,12 @@ public class DWScanReceiver {
             if(mBroadcastReceiverThread != null)
             {
                 // Unregister internal broadcast receiver when we are going in background
-                mContext.unregisterReceiver(mMessageReceiver);
                 cleanReceiverThread();
+                mContext.unregisterReceiver(mMessageReceiver);
+            }
+            else
+            {
+                mContext.unregisterReceiver(mMessageReceiver);
             }
         }
         catch(Exception e)

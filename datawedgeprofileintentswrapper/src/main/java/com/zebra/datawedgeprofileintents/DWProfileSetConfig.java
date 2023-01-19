@@ -42,6 +42,7 @@ public class DWProfileSetConfig extends DWProfileCommandBase {
         Bundle profileConfig = new Bundle();
         if(settings.mProfileName != null)
             profileConfig.putString("PROFILE_NAME", settings.mProfileName);
+
         if(settings.MainBundle.PROFILE_ENABLED != null)
             profileConfig.putString("PROFILE_ENABLED", settings.MainBundle.PROFILE_ENABLED ? "true" : "false");
         if(settings.MainBundle.CONFIG_MODE != null)
