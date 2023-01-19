@@ -1,3 +1,10 @@
+#-----------------------------------------------------
+
+A sample app can be found in the following repository:
+
+https://github.com/ltrudu/DataWedgeIntentWrapperSampleApplication
+
+#-----------------------------------------------------
 # New ChangesLog.txt file
 https://github.com/ltrudu/DataWedgeIntentWrapper/blob/master/ChangesLog.txt
 
@@ -21,10 +28,6 @@ You can check the change here:
 https://github.com/ltrudu/DataWedgeIntentWrapper/commit/a46e32dc5b2cb707cc8c8ae91be45ebaf3257046
 
 #-----------------------------------------------------
-
-A sample app can be found in the following repository:
-
-https://github.com/ltrudu/DataWedgeIntentWrapperSampleApplication
 
 This library is available in jetpack.io
 
