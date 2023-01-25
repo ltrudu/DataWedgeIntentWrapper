@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
+import android.util.Log;
 
 public class DWStatusScanner {
+    private static String TAG = "DWStatusScanner";
     private Context mContext;
     private dataWedgeScannerStatusReceiver mStatusBroadcastReceiver = null;
     private DWStatusScannerSettings mStatusSettings = null;
@@ -91,9 +93,12 @@ public class DWStatusScanner {
     }
 
     void registerNotificationReceiver() {
-        //to register the broadcast receiver
-        if(broadcastReceiverThread == null)
-            broadcastReceiverThread = new HandlerThread(mStatusSettings.mPackageName + ".NOTIFICATION.THREAD");//Create a thread for BroadcastReceiver
+        // Ensure that no thread was left running
+        QuitReceiverThreadNicely();
+
+        Log.d(TAG, "registerNotificationReceiver()");
+        broadcastReceiverThread = new HandlerThread(mStatusSettings.mPackageName + ".NOTIFICATION.THREAD");//Create a thread for BroadcastReceiver
+
         broadcastReceiverThread.start();
 
         broadcastReceiverThreadLooper = broadcastReceiverThread.getLooper();
@@ -113,17 +118,48 @@ public class DWStatusScanner {
         {
             e.printStackTrace();
         }
-        if(broadcastReceiverThreadLooper != null)
+
+        QuitReceiverThreadNicely();
+
+    }
+
+    private void QuitReceiverThreadNicely() {
+        Log.d(TAG, "QuitReceiverThreadNicely()");
+        if(broadcastReceiverHandler != null)
         {
-            try {
-                broadcastReceiverThreadLooper.quit();
-                broadcastReceiverThreadLooper = null;
-                broadcastReceiverThread = null;
+            {
+                try {
+                    Log.d(TAG, "QuitReceiverThreadNicely():broadcastReceiverHandler.removeCallbacksAndMessages(null)");
+                    broadcastReceiverHandler.removeCallbacksAndMessages(null);
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
                 broadcastReceiverHandler = null;
             }
-            catch(Exception e)
+
+            if(broadcastReceiverThreadLooper != null)
             {
-                e.printStackTrace();
+                try {
+                    Log.d(TAG, "QuitReceiverThreadNicely():broadcastReceiverThreadLooper.quit()");
+                    broadcastReceiverThreadLooper.quit();
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                broadcastReceiverThreadLooper = null;
+            }
+
+            if(broadcastReceiverThread != null)
+            {
+                try {
+                    Log.d(TAG, "QuitReceiverThreadNicely():broadcastReceiverThread.quit()");
+                    broadcastReceiverThread.quit();
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                broadcastReceiverThread = null;
             }
         }
     }

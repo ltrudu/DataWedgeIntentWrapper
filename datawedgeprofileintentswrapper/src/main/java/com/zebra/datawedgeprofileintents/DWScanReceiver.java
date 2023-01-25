@@ -153,13 +153,19 @@ public class DWScanReceiver {
     {
         if(mUseSeparateThread && mBroadcastReceiverThread != null)
         {
-            if(mBroadcastReceiverThreadLooper != null)
+            if(mBroadcastReceiverHandler != null)
+            {
+                mBroadcastReceiverHandler.removeCallbacksAndMessages(null);
+                mBroadcastReceiverHandler = null;
+            }
+            if(mBroadcastReceiverThreadLooper != null) {
                 mBroadcastReceiverThreadLooper.quit();
-            mBroadcastReceiverThreadLooper = null;
-            if(mBroadcastReceiverThread != null)
+                mBroadcastReceiverThreadLooper = null;
+            }
+            if(mBroadcastReceiverThread != null) {
                 mBroadcastReceiverThread.quit();
-            mBroadcastReceiverThread = null;
-            mBroadcastReceiverHandler = null;
+                mBroadcastReceiverThread = null;
+            }
         }
     }
 
