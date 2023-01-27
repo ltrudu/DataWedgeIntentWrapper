@@ -1,4 +1,7 @@
 --------------------------------------------------
+V11.5
+Cleaned the code in order to quit threads, threadpool, and handlers correctly.
+--------------------------------------------------
 V11.2:
 --------------------------------------------------
 Fixed possible calls on null references and made the code more robust in DWScannerPluginEnable
