@@ -28,6 +28,7 @@ public class DWStatusScanner {
 
     public void start()
     {
+        Log.d(TAG, "Start Status Scanner Receiver");
         /*
         Register notification broadcast receiver
          */
@@ -41,6 +42,7 @@ public class DWStatusScanner {
 
     public void stop()
     {
+        Log.d(TAG, "Stop Status Scanner Receiver");
         unRegisterNotificationReceiver();
         unRegisterForScannerStatus(mStatusSettings);
     }
@@ -72,6 +74,7 @@ public class DWStatusScanner {
 
     protected void registerForScannerStatus(DWStatusScannerSettings settings)
     {
+        Log.d(TAG, "Scanner Receiver: registerForScannerStatus");
         Bundle b = new Bundle();
         b.putString(DataWedgeConstants.EXTRA_KEY_APPLICATION_NAME, settings.mPackageName);
         b.putString(DataWedgeConstants.EXTRA_KEY_NOTIFICATION_TYPE, DataWedgeConstants.NOTIFICATION_TYPE_SCANNER_STATUS);
@@ -83,6 +86,7 @@ public class DWStatusScanner {
 
     protected void unRegisterForScannerStatus(DWStatusScannerSettings settings)
     {
+        Log.d(TAG, "Scanner Receiver: unRegisterForScannerStatus");
         Bundle b = new Bundle();
         b.putString(DataWedgeConstants.EXTRA_KEY_APPLICATION_NAME, settings.mPackageName);
         b.putString(DataWedgeConstants.EXTRA_KEY_NOTIFICATION_TYPE, DataWedgeConstants.NOTIFICATION_TYPE_SCANNER_STATUS);
@@ -114,7 +118,13 @@ public class DWStatusScanner {
         try {
             mContext.unregisterReceiver(mStatusBroadcastReceiver); //Android method
         }
-        catch(Exception e)
+        catch(IllegalArgumentException e)
+        {
+            Log.d(TAG, "registerNotificationReceiver(): Trying to unregister a receiver that has not been previously released..");
+            Log.d(TAG, "registerNotificationReceiver(): Status receiver should be started before trying to stop it.");
+            //e.printStackTrace();
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
         }
