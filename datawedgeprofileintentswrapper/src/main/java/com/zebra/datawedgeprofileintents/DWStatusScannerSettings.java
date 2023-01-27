@@ -1,6 +1,13 @@
 package com.zebra.datawedgeprofileintents;
 
 public class DWStatusScannerSettings {
+
+    /**
+     * Set to false to work in the mainthread
+     */
+    public boolean mUseSeparateThread = true;
+
+
     /*
     Set a the package name that will retrieve the scanner status
     */

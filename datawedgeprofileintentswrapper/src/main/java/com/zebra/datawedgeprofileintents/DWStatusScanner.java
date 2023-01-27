@@ -97,39 +97,58 @@ public class DWStatusScanner {
     }
 
     void registerNotificationReceiver() {
-        // Ensure that no thread was left running
-        QuitReceiverThreadNicely();
+        if(mStatusSettings.mUseSeparateThread) {
+            // Ensure that no thread was left running
+            QuitReceiverThreadNicely();
 
-        Log.d(TAG, "registerNotificationReceiver()");
-        broadcastReceiverThread = new HandlerThread(mStatusSettings.mPackageName + ".NOTIFICATION.THREAD");//Create a thread for BroadcastReceiver
+            Log.d(TAG, "registerNotificationReceiver()");
+            broadcastReceiverThread = new HandlerThread(mStatusSettings.mPackageName + ".NOTIFICATION.THREAD");//Create a thread for BroadcastReceiver
 
-        broadcastReceiverThread.start();
+            broadcastReceiverThread.start();
 
-        broadcastReceiverThreadLooper = broadcastReceiverThread.getLooper();
-        broadcastReceiverHandler = new Handler(broadcastReceiverThreadLooper);
+            broadcastReceiverThreadLooper = broadcastReceiverThread.getLooper();
+            broadcastReceiverHandler = new Handler(broadcastReceiverThreadLooper);
 
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(DataWedgeConstants.NOTIFICATION_ACTION);
-        mContext.registerReceiver(mStatusBroadcastReceiver, filter, null, broadcastReceiverHandler);
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(DataWedgeConstants.NOTIFICATION_ACTION);
+            mContext.registerReceiver(mStatusBroadcastReceiver, filter, null, broadcastReceiverHandler);
+        }
+        else
+        {
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(DataWedgeConstants.NOTIFICATION_ACTION);
+            mContext.registerReceiver(mStatusBroadcastReceiver, filter);
+
+        }
     }
 
     void unRegisterNotificationReceiver() {
-        //to unregister the broadcast receiver
-        try {
-            mContext.unregisterReceiver(mStatusBroadcastReceiver); //Android method
-        }
-        catch(IllegalArgumentException e)
-        {
-            Log.d(TAG, "registerNotificationReceiver(): Trying to unregister a receiver that has not been previously released..");
-            Log.d(TAG, "registerNotificationReceiver(): Status receiver should be started before trying to stop it.");
-            //e.printStackTrace();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        if(mStatusSettings.mUseSeparateThread) {
+            //to unregister the broadcast receiver
+            try {
+                mContext.unregisterReceiver(mStatusBroadcastReceiver); //Android method
+            } catch (IllegalArgumentException e) {
+                Log.d(TAG, "registerNotificationReceiver(): Trying to unregister a receiver that has not been previously released..");
+                Log.d(TAG, "registerNotificationReceiver(): Status receiver should be started before trying to stop it.");
+                //e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        QuitReceiverThreadNicely();
+            QuitReceiverThreadNicely();
+        }
+        else
+        {
+            try {
+                mContext.unregisterReceiver(mStatusBroadcastReceiver); //Android method
+            } catch (IllegalArgumentException e) {
+                Log.d(TAG, "registerNotificationReceiver(): Trying to unregister a receiver that has not been previously released..");
+                Log.d(TAG, "registerNotificationReceiver(): Status receiver should be started before trying to stop it.");
+                //e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
