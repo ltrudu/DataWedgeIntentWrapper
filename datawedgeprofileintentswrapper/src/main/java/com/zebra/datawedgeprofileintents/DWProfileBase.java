@@ -27,7 +27,7 @@ public abstract class DWProfileBase {
     class to prevent waiting to loong for DW in case
     of problem
      */
-    protected Handler mTimeOutHandler = new Handler();
+    protected Handler mTimeOutHandler = null;
 
     /*
     What will be done at the end of the TimeOut
@@ -77,6 +77,10 @@ public abstract class DWProfileBase {
         Enabled by default in DWProfileBaseSettings
          */
         if(settings != null && settings.mEnableTimeOutMechanism) {
+            if(mTimeOutHandler == null)
+            {
+                mTimeOutHandler = new Handler();
+            }
             mTimeOutHandler.postDelayed(mTimeOutRunnable,
                     mSettings.mTimeOutMS);
         }
@@ -89,6 +93,7 @@ public abstract class DWProfileBase {
         if(mTimeOutHandler != null)
         {
             mTimeOutHandler.removeCallbacks(mTimeOutRunnable);
+            mTimeOutHandler = null;
         }
     }
 }

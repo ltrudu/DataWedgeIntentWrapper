@@ -135,6 +135,9 @@ public class DWProfileCommandBase extends DWProfileBase {
                     if(commandidentifier == null)
                         return;
 
+                    if(commandidentifier.equalsIgnoreCase(mCommandIdentifier) == false)
+                        return;
+
                     Bundle bundle = new Bundle();
                     String resultInfo = "";
                     if (intent.hasExtra("RESULT_INFO")) {
@@ -163,7 +166,6 @@ public class DWProfileCommandBase extends DWProfileBase {
                         }
                     }
 
-
                     String text = "Action: " + action + "\n" +
                             "Command: " + command + "\n" +
                             "Result: " + result + "\n" +
@@ -171,14 +173,13 @@ public class DWProfileCommandBase extends DWProfileBase {
                             "CID:" + commandidentifier;
 
                     Log.d(TAG, text);
-
-                    if(commandidentifier.equalsIgnoreCase(mCommandIdentifier) == false)
-                        return;
+                    // We have dealed with the right command
+                    // We need to remove all the base class ressources
+                    cleanAll();
 
                     if(mProfileCommandCallback != null)
                     {
                         mProfileCommandCallback.result(mSettings.mProfileName, action, command, result, resultInfo, commandidentifier);
-                        cleanAll();
                     }
             }
         }
