@@ -1,6 +1,8 @@
 --------------------------------------------------
 V11.5
 Cleaned the code in order to quit threads, threadpool, and handlers correctly.
+Added settings to disable multithreading on the status receiver
+Fixed and update code of StatusReceiver and ScanReceiver to work in singleton mode (dependency injection case)
 --------------------------------------------------
 V11.2:
 --------------------------------------------------
