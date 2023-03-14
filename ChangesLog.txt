@@ -1,4 +1,10 @@
 --------------------------------------------------
+V11.7
+Changed cleaning behaviour of ProfileCommandBase.
+Fixed a bug that may occurs if the user does not provide a mProfileCommandCallback.
+The timeout timer was not stopped creating a leak and an exception due to a call to a null object when the timeout was reached.
+Changed the handling of the timeout in ProfileBase to make it more robust and proof of calls to a null object's exception.
+--------------------------------------------------
 V11.5
 Cleaned the code in order to quit threads, threadpool, and handlers correctly.
 Added settings to disable multithreading on the status receiver
