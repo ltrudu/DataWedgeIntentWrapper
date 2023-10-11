@@ -1,3 +1,6 @@
+*Please be aware that this library / application / sample is provided as a community project without any guarantee of support*
+=========================================================
+
 #-----------------------------------------------------
 
 A sample app can be found in the following repository:
