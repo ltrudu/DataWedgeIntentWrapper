@@ -26,6 +26,12 @@ public class PluginKeystroke
 
     public Boolean keystroke_delay_multibyte_chars_only = null;
 
+    public Boolean keystroke_send_chars_as_events = null;
+
+    public Boolean keystroke_send_control_chars_as_events = null;
+
+    public Boolean keystroke_send_tab_as_string = null;
+
     public Bundle getKeyStrokePluginBundle(boolean resetConfig)
     {
         // KEYSTROKE plugin configuration -> Disabled
@@ -55,5 +61,19 @@ public class PluginKeystroke
         if(keystroke_delay_multibyte_chars_only != null)
             keystrokeProps.putString("keystroke_delay_multibyte_chars_only", keystroke_delay_multibyte_chars_only ? "true" : "false");
 
+        if(keystroke_send_chars_as_events != null)
+        {
+            keystrokeProps.putString("keystroke_send_chars_as_events", keystroke_send_chars_as_events ? "true" : "false");
+        }
+
+        if(keystroke_send_control_chars_as_events != null)
+        {
+            keystrokeProps.putString("keystroke_send_control_chars_as_events", keystroke_send_control_chars_as_events ? "true" : "false");
+        }
+
+        if(keystroke_send_tab_as_string != null)
+        {
+            keystrokeProps.putString("keystroke_send_tab_as_string", keystroke_send_tab_as_string ? "true" : "false");
+        }
     }
 }
