@@ -1,2 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zebra.datawedgeprofileintents" />
+    package="com.zebra.datawedgeprofileintents" >
+
+    <uses-permission android:name="com.symbol.datawedge.permission.contentprovider" />
+    <queries>
+    <package android:name="com.symbol.datawedge" />
+    </queries>
+
+</manifest>
