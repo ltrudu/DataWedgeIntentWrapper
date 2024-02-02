@@ -4,6 +4,8 @@ plugins {
 }
 
 android {
+    compileSdkVersion 34
+
     defaultConfig {
         minSdkVersion 19
         //noinspection EditedTargetSdkVersion
