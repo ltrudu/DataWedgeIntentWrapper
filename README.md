@@ -1,3 +1,6 @@
+*Please be aware that this library / application / sample is provided as a community project without any guarantee of support*
+=========================================================
+
 #-----------------------------------------------------
 
 A sample app can be found in the following repository:
@@ -29,7 +32,7 @@ https://github.com/ltrudu/DataWedgeIntentWrapper/commit/a46e32dc5b2cb707cc8c8ae9
 
 #-----------------------------------------------------
 
-This library is available in jetpack.io
+This library is available in jitpack.io
 
 To get it, you should add the following repository source in your build.graddle:
 
