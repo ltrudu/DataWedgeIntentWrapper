@@ -15,6 +15,8 @@ import com.zebra.datawedgeprofileenums.SC_S_SCANNER_STATUS;
 import java.util.Date;
 import java.util.Set;
 
+import androidx.core.content.ContextCompat;
+
 /**
  * Created by laure on 16/04/2018.
  */
@@ -74,15 +76,18 @@ public class DWProfileCommandBase extends DWProfileBase {
         Receiver is registered in a new thread instead of the main thread
         This allow us to still receive the broadcasted results even if we
         are working on a separate thread or in synchronous mode
-         */
+        */
+
         broadcastReceiverThread = new HandlerThread(settings.mProfileName + ".THREAD");//Create a thread for BroadcastReceiver
         broadcastReceiverThread.start();
 
         broadcastReceiverThreadLooper = broadcastReceiverThread.getLooper();
         broadcastReceiverHandler = new Handler(broadcastReceiverThreadLooper);
 
+
         //mContext.registerReceiver(mBroadcastReceiver, intentFilter);
-        mContext.registerReceiver(mBroadcastReceiver, intentFilter, null, broadcastReceiverHandler);
+        //mContext.registerReceiver(mBroadcastReceiver, intentFilter, null, broadcastReceiverHandler);
+        ContextCompat.registerReceiver(mContext, mBroadcastReceiver, intentFilter, null, broadcastReceiverHandler, ContextCompat.RECEIVER_EXPORTED);
      }
 
     protected void sendDataWedgeIntentWithExtraRequestResult(String action, String extraKey, String extraValue)
@@ -173,14 +178,14 @@ public class DWProfileCommandBase extends DWProfileBase {
                             "CID:" + commandidentifier;
 
                     Log.d(TAG, text);
-                    // We have dealed with the right command
-                    // We need to remove all the base class ressources
-                    cleanAll();
 
                     if(mProfileCommandCallback != null)
                     {
                         mProfileCommandCallback.result(mSettings.mProfileName, action, command, result, resultInfo, commandidentifier);
                     }
+                    // We have dealed with the right command
+                    // We need to remove all the base class ressources
+                    cleanAll();
             }
         }
     }

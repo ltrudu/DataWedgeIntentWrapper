@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 
+import androidx.core.content.ContextCompat;
+
 public class DWScanReceiver {
 
     private String mIntentAction = "";
@@ -115,7 +117,9 @@ public class DWScanReceiver {
                 mBroadcastReceiverThreadLooper = mBroadcastReceiverThread.getLooper();
                 mBroadcastReceiverHandler = new Handler(mBroadcastReceiverThreadLooper);
 
-                mContext.registerReceiver(mMessageReceiver, mIntentFilter, null, mBroadcastReceiverHandler);
+                //mContext.registerReceiver(mMessageReceiver, mIntentFilter, null, mBroadcastReceiverHandler);
+                ContextCompat.registerReceiver(mContext, mMessageReceiver, mIntentFilter, null, mBroadcastReceiverHandler, ContextCompat.RECEIVER_EXPORTED);
+
             } catch (Exception e) {
                 e.printStackTrace();
                 cleanReceiverThread();
