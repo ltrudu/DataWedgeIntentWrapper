@@ -40,7 +40,7 @@ maven { url 'https://jitpack.io' }
 
 Then, you can add the following dependency:
 
-implementation 'com.github.ltrudu:DataWedgeIntentWrapper:V11.0'
+implementation 'com.github.ltrudu:DataWedgeIntentWrapper:14.0'
 
 or
 
