@@ -34,6 +34,8 @@ https://github.com/ltrudu/DataWedgeIntentWrapper/commit/a46e32dc5b2cb707cc8c8ae9
 
 This library is available in jitpack.io
 
+https://jitpack.io/#ltrudu/DataWedgeIntentWrapper/14.0
+
 To get it, you should add the following repository source in your build.graddle:
 
 maven { url 'https://jitpack.io' }
