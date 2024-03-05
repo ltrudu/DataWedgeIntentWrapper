@@ -1,6 +1,9 @@
 *Please be aware that this library / application / sample is provided as a community project without any guarantee of support*
 =========================================================
 
+[![](https://jitpack.io/v/ltrudu/DataWedgeIntentWrapper.svg)](https://jitpack.io/#ltrudu/DataWedgeIntentWrapper)
+
+
 #-----------------------------------------------------
 
 A sample app can be found in the following repository:
