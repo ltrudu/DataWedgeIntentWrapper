@@ -2,7 +2,7 @@
 =========================================================
 
 [![](https://jitpack.io/v/ltrudu/DataWedgeIntentWrapper.svg)](https://jitpack.io/#ltrudu/DataWedgeIntentWrapper)
-
+[![](https://jitpack.io/v/ltrudu/DataWedgeIntentWrapper/month.svg)](https://jitpack.io/#ltrudu/DataWedgeIntentWrapper)
 
 #-----------------------------------------------------
 
