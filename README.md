@@ -6,7 +6,7 @@
 
 #-----------------------------------------------------
 
-A sample app can be found in the following repository:
+A Java and a Kotlin sample app can be found in the following repository:
 
 https://github.com/ltrudu/DataWedgeIntentWrapperSampleApplication
 
