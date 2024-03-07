@@ -1,11 +1,15 @@
-V11.9
+V14.1
+Added a class CreateProfileHelper with a static method that allow you to create a profile in one method call.
+Check "Easy Create Profile" in Java sample or the creation of the profile in the Kotlin sample for more information. 
+--------------------------------------------------
+V14.0
 Update to API34
 Changes in the declaration of the dynamic Broadcast receivers according to new API34 rules.
 Migrated all receiver registration to : ContextCompat.registerReceiver 
 --------------------------------------------------
 V11.8
 Added following paramters to the Keystroke plugin:
-    Boolean keystroke_send_chars_as_events
+    Boolean keystroke_send_chars_as_event
     Boolean keystroke_send_control_chars_as_events
     Boolean keystroke_send_tab_as_string
 
