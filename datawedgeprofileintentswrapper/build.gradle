@@ -37,3 +37,16 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'androidx.appcompat:appcompat:1.7.0'
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.zebra.datawedgeprofileintents'
+                artifactId = 'datawedgeprofileintents'
+                version = '14.4'
+            }
+        }
+    }
+}
