@@ -127,7 +127,7 @@ public class DWScanReceiver {
         }
         else
         {
-            mContext.registerReceiver(mMessageReceiver, mIntentFilter);
+            ContextCompat.registerReceiver(mContext, mMessageReceiver, mIntentFilter, ContextCompat.RECEIVER_EXPORTED);
         }
         // Register the internal broadcast receiver when we are alive
     }

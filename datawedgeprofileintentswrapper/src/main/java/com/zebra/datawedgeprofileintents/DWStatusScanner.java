@@ -10,6 +10,8 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.Log;
 
+import androidx.core.content.ContextCompat;
+
 public class DWStatusScanner {
     private static String TAG = "DWStatusScanner";
     private Context mContext;
@@ -111,14 +113,13 @@ public class DWStatusScanner {
 
             IntentFilter filter = new IntentFilter();
             filter.addAction(DataWedgeConstants.NOTIFICATION_ACTION);
-            mContext.registerReceiver(mStatusBroadcastReceiver, filter, null, broadcastReceiverHandler);
-        }
+            ContextCompat.registerReceiver(mContext, mStatusBroadcastReceiver, filter, null, broadcastReceiverHandler,  ContextCompat.RECEIVER_EXPORTED);
+       }
         else
         {
             IntentFilter filter = new IntentFilter();
             filter.addAction(DataWedgeConstants.NOTIFICATION_ACTION);
-            mContext.registerReceiver(mStatusBroadcastReceiver, filter);
-
+            ContextCompat.registerReceiver(mContext, mStatusBroadcastReceiver, filter, ContextCompat.RECEIVER_EXPORTED);
         }
     }
 
