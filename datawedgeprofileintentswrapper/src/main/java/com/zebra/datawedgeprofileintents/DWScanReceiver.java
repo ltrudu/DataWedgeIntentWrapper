@@ -117,7 +117,6 @@ public class DWScanReceiver {
                 mBroadcastReceiverThreadLooper = mBroadcastReceiverThread.getLooper();
                 mBroadcastReceiverHandler = new Handler(mBroadcastReceiverThreadLooper);
 
-                //mContext.registerReceiver(mMessageReceiver, mIntentFilter, null, mBroadcastReceiverHandler);
                 ContextCompat.registerReceiver(mContext, mMessageReceiver, mIntentFilter, null, mBroadcastReceiverHandler, ContextCompat.RECEIVER_EXPORTED);
 
             } catch (Exception e) {

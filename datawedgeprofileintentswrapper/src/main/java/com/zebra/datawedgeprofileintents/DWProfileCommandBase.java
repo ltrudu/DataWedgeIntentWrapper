@@ -84,9 +84,6 @@ public class DWProfileCommandBase extends DWProfileBase {
         broadcastReceiverThreadLooper = broadcastReceiverThread.getLooper();
         broadcastReceiverHandler = new Handler(broadcastReceiverThreadLooper);
 
-
-        //mContext.registerReceiver(mBroadcastReceiver, intentFilter);
-        //mContext.registerReceiver(mBroadcastReceiver, intentFilter, null, broadcastReceiverHandler);
         ContextCompat.registerReceiver(mContext, mBroadcastReceiver, intentFilter, null, broadcastReceiverHandler, ContextCompat.RECEIVER_EXPORTED);
      }
 

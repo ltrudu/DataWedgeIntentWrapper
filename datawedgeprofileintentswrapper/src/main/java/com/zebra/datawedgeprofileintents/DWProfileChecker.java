@@ -10,6 +10,8 @@ import android.os.Looper;
 
 import java.util.Arrays;
 
+import androidx.core.content.ContextCompat;
+
 /**
  * Created by laure on 16/04/2018.
  */
@@ -74,7 +76,7 @@ public class DWProfileChecker extends DWProfileBase {
         broadcastReceiverThreadLooper = broadcastReceiverThread.getLooper();
         broadcastReceiverHandler = new Handler(broadcastReceiverThreadLooper);
 
-        mContext.registerReceiver(mBroadcastReceiver, intentFilter, null, broadcastReceiverHandler);
+        ContextCompat.registerReceiver(mContext, mBroadcastReceiver, intentFilter, null, broadcastReceiverHandler, ContextCompat.RECEIVER_EXPORTED);
 
         /*
         Ask for DataWedge profile list

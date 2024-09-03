@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import androidx.core.content.ContextCompat;
+
 /**
  * Created by laure on 16/04/2018.
  */
@@ -87,7 +89,8 @@ public class DWEnumerateScanners extends DWProfileBase {
         broadcastReceiverThreadLooper = broadcastReceiverThread.getLooper();
         broadcastReceiverHandler = new Handler(broadcastReceiverThreadLooper);
 
-        mContext.registerReceiver(mBroadcastReceiver, intentFilter, null, broadcastReceiverHandler);
+        ContextCompat.registerReceiver(mContext, mBroadcastReceiver, intentFilter, null, broadcastReceiverHandler, ContextCompat.RECEIVER_EXPORTED);
+
 
         /*
         Ask for DataWedge profile list
