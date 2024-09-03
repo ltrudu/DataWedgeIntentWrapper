@@ -2,13 +2,11 @@
 buildscript {
     ext {
         kotlin_version = '1.8.0'
-        compose_version = '1.4.0'
     }
     repositories {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        maven { url 'https://mvnrepository.com/artifact/com.github.gundy/semver4j' }
         gradlePluginPortal()
     }
     dependencies {
