@@ -4,6 +4,12 @@ plugins {
     id 'maven-publish'
 }
 
+ext {
+    PUBLISH_GROUP_ID = 'com.zebra.datawedgeprofileintents'
+    PUBLISH_ARTIFACT_ID = 'datawedgeprofileintents'
+    PUBLISH_VERSION = '14.6'
+}
+
 android {
     compileSdkVersion 33
 
@@ -11,10 +17,9 @@ android {
 
     defaultConfig {
         minSdkVersion 21
-        //noinspection EditedTargetSdkVersion
         targetSdkVersion 33
-        versionCode 145
-        versionName "14.5"
+        versionCode 146
+        versionName "14.6"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -27,8 +32,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -44,9 +49,6 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.zebra.datawedgeprofileintents'
-                artifactId = 'datawedgeprofileintents'
-                version = '14.4'
             }
         }
     }

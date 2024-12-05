@@ -131,6 +131,24 @@ public class DWScanReceiver {
         // Register the internal broadcast receiver when we are alive
     }
 
+    private static String INTENT_ACTION="";
+    private static String INTENT_CATEGORY="";
+    BroadcastReceiver myReceiver = null;
+
+    private void registerReceiver(Context context)
+    {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(INTENT_ACTION);
+        filter.addCategory(INTENT_CATEGORY);
+        BroadcastReceiver messageReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                // Do your stuffs here.
+            }
+        };
+        ContextCompat.registerReceiver(context, messageReceiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED);
+    }
+
     public void stopReceive()
     {
         try
