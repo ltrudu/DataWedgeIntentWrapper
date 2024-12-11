@@ -7,19 +7,19 @@ plugins {
 ext {
     PUBLISH_GROUP_ID = 'com.zebra.datawedgeprofileintents'
     PUBLISH_ARTIFACT_ID = 'datawedgeprofileintents'
-    PUBLISH_VERSION = '14.6'
+    PUBLISH_VERSION = '14.7'
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 35
 
     namespace "com.zebra.datawedgeprofileintents"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 146
-        versionName "14.6"
+        targetSdkVersion 35
+        versionCode 147
+        versionName "14.7"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -32,8 +32,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
@@ -41,7 +41,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'androidx.core:core:1.15.0'
 }
 
 afterEvaluate {
