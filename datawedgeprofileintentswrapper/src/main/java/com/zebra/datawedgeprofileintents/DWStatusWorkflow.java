@@ -12,25 +12,25 @@ import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
-public class DWStatusScanner {
-    private static String TAG = "DWStatusScanner";
+public class DWStatusWorkflow {
+    private static String TAG = "DWStatusWorkflow";
     private Context mContext;
-    private dataWedgeScannerStatusReceiver mStatusBroadcastReceiver = null;
-    private DWStatusScannerSettings mStatusSettings = null;
+    private dataWedgeWorkflowStatusReceiver mStatusBroadcastReceiver = null;
+    private DWStatusWorkflowSettings mStatusSettings = null;
     private Handler broadcastReceiverHandler = null;
     private HandlerThread broadcastReceiverThread = null;
     private Looper broadcastReceiverThreadLooper = null;
 
 
-    public DWStatusScanner(Context aContext, DWStatusScannerSettings settings) {
+    public DWStatusWorkflow(Context aContext, DWStatusWorkflowSettings settings) {
         mContext = aContext;
         mStatusSettings = settings;
-        mStatusBroadcastReceiver = new dataWedgeScannerStatusReceiver();
+        mStatusBroadcastReceiver = new dataWedgeWorkflowStatusReceiver();
     }
 
     public void start()
     {
-        Log.d(TAG, "Start Status Scanner Receiver");
+        Log.d(TAG, "Start Status Workflow Receiver");
         /*
         Register notification broadcast receiver
          */
@@ -39,17 +39,17 @@ public class DWStatusScanner {
         /*
         Register for status callcack
          */
-        registerForScannerStatus(mStatusSettings);
+        registerForWorkflowStatus(mStatusSettings);
     }
 
     public void stop()
     {
         Log.d(TAG, "Stop Status Scanner Receiver");
         unRegisterNotificationReceiver();
-        unRegisterForScannerStatus(mStatusSettings);
+        unRegisterForWorkflowStatus(mStatusSettings);
     }
 
-    protected class dataWedgeScannerStatusReceiver extends BroadcastReceiver
+    protected class dataWedgeWorkflowStatusReceiver extends BroadcastReceiver
     {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -61,10 +61,10 @@ public class DWStatusScanner {
                     String NOTIFICATION_TYPE  = b.getString(DataWedgeConstants.EXTRA_RESULT_NOTIFICATION_TYPE);
                     if(NOTIFICATION_TYPE!= null) {
                         switch (NOTIFICATION_TYPE) {
-                            case DataWedgeConstants.NOTIFICATION_TYPE_SCANNER_STATUS:
+                            case DataWedgeConstants.NOTIFICATION_TYPE_WORKFLOW_STATUS:
                                 String status = b.getString(DataWedgeConstants.EXTRA_KEY_VALUE_NOTIFICATION_STATUS);
                                 if(status!=null){
-                                    mStatusSettings.mScannerCallback.result(status);
+                                    mStatusSettings.mWorkflowCallback.result(status);
                                 }
                                 break;
                         }
@@ -74,24 +74,24 @@ public class DWStatusScanner {
         }
     };
 
-    protected void registerForScannerStatus(DWStatusScannerSettings settings)
+    protected void registerForWorkflowStatus(DWStatusWorkflowSettings settings)
     {
         Log.d(TAG, "Scanner Receiver: registerForWorkflowStatus");
         Bundle b = new Bundle();
         b.putString(DataWedgeConstants.EXTRA_KEY_APPLICATION_NAME, settings.mPackageName);
-        b.putString(DataWedgeConstants.EXTRA_KEY_NOTIFICATION_TYPE, DataWedgeConstants.NOTIFICATION_TYPE_SCANNER_STATUS);
+        b.putString(DataWedgeConstants.EXTRA_KEY_NOTIFICATION_TYPE, DataWedgeConstants.NOTIFICATION_TYPE_WORKFLOW_STATUS);
         Intent i = new Intent();
         i.setAction(DataWedgeConstants.ACTION_DATAWEDGE_FROM_6_2);
         i.putExtra(DataWedgeConstants.ACTION_EXTRA_REGISTER_FOR_NOTIFICATION, b);
         mContext.getApplicationContext().sendBroadcast(i);
     }
 
-    protected void unRegisterForScannerStatus(DWStatusScannerSettings settings)
+    protected void unRegisterForWorkflowStatus(DWStatusWorkflowSettings settings)
     {
         Log.d(TAG, "Scanner Receiver: unRegisterForWorkflowStatus");
         Bundle b = new Bundle();
         b.putString(DataWedgeConstants.EXTRA_KEY_APPLICATION_NAME, settings.mPackageName);
-        b.putString(DataWedgeConstants.EXTRA_KEY_NOTIFICATION_TYPE, DataWedgeConstants.NOTIFICATION_TYPE_SCANNER_STATUS);
+        b.putString(DataWedgeConstants.EXTRA_KEY_NOTIFICATION_TYPE, DataWedgeConstants.NOTIFICATION_TYPE_WORKFLOW_STATUS);
         Intent i = new Intent();
         i.setAction(DataWedgeConstants.ACTION_DATAWEDGE_FROM_6_2);
         i.putExtra(DataWedgeConstants.ACTION_EXTRA_UNREGISTER_FOR_NOTIFICATION, b);
@@ -104,7 +104,7 @@ public class DWStatusScanner {
             QuitReceiverThreadNicely();
 
             Log.d(TAG, "registerNotificationReceiver()");
-            broadcastReceiverThread = new HandlerThread(mStatusSettings.mPackageName + ".NOTIFICATION.THREAD");//Create a thread for BroadcastReceiver
+            broadcastReceiverThread = new HandlerThread(mStatusSettings.mPackageName + ".WORKFLOW.NOTIFICATION.THREAD");//Create a thread for BroadcastReceiver
 
             broadcastReceiverThread.start();
 
