@@ -43,6 +43,8 @@ public class DataWedgeConstants {
     public static final String DWAPI_ACTION_SCANNERINPUTPLUGIN = "com.symbol.datawedge.api.ACTION_SCANNERINPUTPLUGIN";
     public static final String DWAPI_PARAMETER_SCANNERINPUTPLUGIN_ENABLE = "ENABLE_PLUGIN";
     public static final String DWAPI_PARAMETER_SCANNERINPUTPLUGIN_DISABLE = "DISABLE_PLUGIN";
+    public static final String DWAPI_PARAMETER_SCANNERINPUTPLUGIN_RESUME = "RESUME_PLUGIN";
+    public static final String DWAPI_PARAMETER_SCANNERINPUTPLUGIN_SUSPEND = "SUSPEND_PLUGIN";
 
     public static final String NOTIFICATION_ACTION = "com.symbol.datawedge.api.NOTIFICATION_ACTION";
 
@@ -89,6 +91,8 @@ public class DataWedgeConstants {
     public static final String EXTRA_CREATE_PROFILE = "com.symbol.datawedge.api.CREATE_PROFILE";
     public static final String EXTRA_SET_CONFIG = "com.symbol.datawedge.api.SET_CONFIG";
     public static final String EXTRA_RESTORE_CONFIG = "com.symbol.datawedge.api.RESTORE_CONFIG";
+    public static final String EXTRA_GET_DW_STATUS = "com.symbol.datawedge.api.GET_DATAWEDGE_STATUS";
+    public static final String EXTRA_RESULT_GET_DW_STATUS = "com.symbol.datawedge.api.RESULT_GET_DATAWEDGE_STATUS";
     //  6.3 API and up Actions received from DataWedge
     public static final String ACTION_RESULT_NOTIFICATION = "com.symbol.datawedge.api.NOTIFICATION_ACTION";
     //  6.3 API and up Extras received from DataWedge

@@ -20,7 +20,7 @@ public class DWProfileBaseSettings
     /*
     Some method return only errors (StartScan, StopScan)
     We do not need a time out for them
-     */
+    */
     public boolean mEnableTimeOutMechanism = true;
 
     /*

@@ -7,7 +7,7 @@ plugins {
 ext {
     PUBLISH_GROUP_ID = 'com.zebra.datawedgeprofileintents'
     PUBLISH_ARTIFACT_ID = 'datawedgeprofileintents'
-    PUBLISH_VERSION = '14.10'
+    PUBLISH_VERSION = '15.0'
 }
 
 android {
@@ -18,8 +18,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 161
-        versionName "14.10"
+        versionCode 162
+        versionName "15.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 

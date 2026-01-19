@@ -16,24 +16,24 @@ import androidx.core.content.ContextCompat;
  * Created by laure on 16/04/2018.
  */
 
-public class DWProfileChecker extends DWProfileBase {
+public class DWGetDatawedgeStatus extends DWProfileBase {
 
     private Handler broadcastReceiverHandler = null;
     private HandlerThread broadcastReceiverThread = null;
     private Looper broadcastReceiverThreadLooper = null;
 
-    public DWProfileChecker(Context aContext) {
+    public DWGetDatawedgeStatus(Context aContext) {
         super(aContext);
-        mBroadcastReceiver = new checkProfileReceiver();
+        mBroadcastReceiver = new dwStatusReceiver();
     }
 
     /*
         An interface callback to be informed of the result
-        when checking if a profile exists
+        when checking datawedge status
          */
-    public interface onProfileExistResult
+    public interface onGetDatawedgeStatusResult
     {
-        void result(String profileName, boolean exists);
+        void result(boolean enabled);
         void timeOut(String profileName);
     }
 
@@ -41,21 +41,21 @@ public class DWProfileChecker extends DWProfileBase {
     A store to keep the callback to be fired when we will get the
     result of the intent
      */
-    private onProfileExistResult mProfileExistsCallback = null;
+    private onGetDatawedgeStatusResult mGetDatawedgeStatusCallback = null;
 
     /*
     The receiver that we will register to retrieve DataWedge answer
      */
-    private checkProfileReceiver mBroadcastReceiver = null;
+    private dwStatusReceiver mBroadcastReceiver = null;
 
-    public void execute(DWProfileCheckerSettings settings, onProfileExistResult callback)
+    public void execute(DWGetDatawedgeStatusSettings settings, onGetDatawedgeStatusResult callback)
     {
         /*
         Launch timeout mechanism
          */
         super.execute(settings);
 
-        mProfileExistsCallback = callback;
+        mGetDatawedgeStatusCallback = callback;
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(DataWedgeConstants.ACTION_RESULT_DATAWEDGE_FROM_6_2);
@@ -81,23 +81,22 @@ public class DWProfileChecker extends DWProfileBase {
         /*
         Ask for DataWedge profile list
          */
-        sendDataWedgeIntentWithExtra(DataWedgeConstants.ACTION_DATAWEDGE_FROM_6_2, DataWedgeConstants.EXTRA_GET_PROFILES_LIST, DataWedgeConstants.EXTRA_EMPTY);
+        sendDataWedgeIntentWithExtra(DataWedgeConstants.ACTION_DATAWEDGE_FROM_6_2, DataWedgeConstants.EXTRA_GET_DW_STATUS, DataWedgeConstants.EXTRA_EMPTY);
 
     }
 
-    private class checkProfileReceiver extends BroadcastReceiver
+    private class dwStatusReceiver extends BroadcastReceiver
     {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.hasExtra(DataWedgeConstants.EXTRA_RESULT_GET_PROFILE_LIST))
+            if (intent.hasExtra(DataWedgeConstants.EXTRA_RESULT_GET_DW_STATUS))
             {
                 //  6.2 API to GetProfileList
-                String[] profilesList = intent.getStringArrayExtra(DataWedgeConstants.EXTRA_RESULT_GET_PROFILE_LIST);
-                //  Profile list for 6.2 APIs
-                boolean exists = Arrays.asList(profilesList).contains(mSettings.mProfileName);
-                if(mProfileExistsCallback != null)
+                String isEnabled = intent.getStringExtra(DataWedgeConstants.EXTRA_RESULT_GET_DW_STATUS);
+
+                if(mGetDatawedgeStatusCallback != null)
                 {
-                    mProfileExistsCallback.result(mSettings.mProfileName, exists);
+                    mGetDatawedgeStatusCallback.result(isEnabled.equalsIgnoreCase("enabled"));
                     cleanAll();
                 }
             }
@@ -108,7 +107,7 @@ public class DWProfileChecker extends DWProfileBase {
     protected void cleanAll()
     {
         mSettings.mProfileName = "";
-        mProfileExistsCallback = null;
+        mGetDatawedgeStatusCallback = null;
         mContext.unregisterReceiver(mBroadcastReceiver);
         if(broadcastReceiverThread != null)
         {
@@ -125,9 +124,9 @@ public class DWProfileChecker extends DWProfileBase {
      */
     @Override
     protected void onTimeOut() {
-        if(mProfileExistsCallback != null)
+        if(mGetDatawedgeStatusCallback != null)
         {
-            mProfileExistsCallback.timeOut(mSettings.mProfileName);
+            mGetDatawedgeStatusCallback.timeOut(mSettings.mProfileName);
             cleanAll();
         }
     }
