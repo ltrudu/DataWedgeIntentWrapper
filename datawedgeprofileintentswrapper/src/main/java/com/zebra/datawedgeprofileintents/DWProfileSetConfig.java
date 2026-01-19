@@ -95,6 +95,15 @@ public class DWProfileSetConfig extends DWProfileCommandBase {
             System.exit(0);
         }
 
+        // Add rfid plugin config
+        try {
+            pluginConfigs.add(settings.RFIDPlugin.getRFIDPluginBundle(true));
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG);
+            System.exit(0);
+        }
+
         // Add keystroke plugin config (disabled in this case)
         pluginConfigs.add(settings.KeystrokePlugin.getKeyStrokePluginBundle(true));
 

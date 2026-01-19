@@ -29,6 +29,8 @@ public class DWProfileSetConfigSettings extends DWProfileBaseSettings
 
     public PluginScanner ScannerPlugin = new PluginScanner();
 
+    public PluginRFID RFIDPlugin = new PluginRFID();
+
     public static DWProfileSetConfigSettings fromJson(String myJSONString)
     {
         Log.v("JSONBuilder:", myJSONString);
