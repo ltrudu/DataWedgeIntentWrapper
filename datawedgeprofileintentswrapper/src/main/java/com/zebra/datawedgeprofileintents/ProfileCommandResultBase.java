@@ -1,6 +1,14 @@
 package com.zebra.datawedgeprofileintents;
 
 public class ProfileCommandResultBase implements IProfileCommandResult {
+
+    public interface IPostponedOnResult
+    {
+        void onResult();
+    }
+
+    public IPostponedOnResult postponedOnResult = null;
+
     public IProfileCommandResult IProfileCommandResult = null;
     public String profileName = null, action = null, command = null, result = null, resultInfo = null, commandidentifier = null;
     public boolean initialized = false;
@@ -19,6 +27,10 @@ public class ProfileCommandResultBase implements IProfileCommandResult {
         this.resultInfo         = resultInfo ;
         this.commandidentifier  = commandidentifier;
         this.initialized        = true;
+        if(postponedOnResult != null)
+        {
+            postponedOnResult.onResult();
+        }
     }
 
     @Override
