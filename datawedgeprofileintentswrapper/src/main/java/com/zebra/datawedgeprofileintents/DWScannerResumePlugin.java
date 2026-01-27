@@ -71,7 +71,7 @@ public class DWScannerResumePlugin extends DWProfileCommandBase {
             mScannerCallback = new DWStatusScannerCallback() {
                 @Override
                 public void result(String status) {
-                    if(status != null && status.equalsIgnoreCase(DataWedgeConstants.SCAN_STATUS_WAITING))
+                    if(status != null && (status.equalsIgnoreCase(DataWedgeConstants.SCAN_STATUS_WAITING)|| status.equalsIgnoreCase(DataWedgeConstants.SCAN_STATUS_SCANNING)))
                     {
                         if(myLocalCallback != null) {
                             myLocalCallback.executeResults();

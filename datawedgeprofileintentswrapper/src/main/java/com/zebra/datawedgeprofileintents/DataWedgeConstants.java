@@ -52,6 +52,7 @@ public class DataWedgeConstants {
     public static final String NOTIFICATION_TYPE_WORKFLOW_STATUS = "WORKFLOW_STATUS";
     public static final String SCAN_STATUS_WAITING = "WAITING";
     public static final String SCAN_STATUS_SCANNING  = "SCANNING";
+    public static final String SCAN_STATUS_IDLE  = "IDLE";
     public static final String SCAN_STATUS_CONNECTED = "CONNECTED";
     public static final String SCAN_STATUS_DISCONNECTED  = "DISCONNECTED";
     public static final String SCAN_STATUS_DISABLED  = "DISABLED";
