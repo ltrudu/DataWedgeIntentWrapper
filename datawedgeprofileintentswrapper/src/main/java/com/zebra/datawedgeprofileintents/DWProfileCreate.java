@@ -12,7 +12,7 @@ public class DWProfileCreate extends DWProfileCommandBase {
         super(aContext);
     }
 
-    public void execute(DWProfileCreateSettings settings, onProfileCommandResult callback)
+    public void execute(DWProfileCreateSettings settings, IProfileCommandResult callback)
     {
         /*
         Call base class execute to register command result

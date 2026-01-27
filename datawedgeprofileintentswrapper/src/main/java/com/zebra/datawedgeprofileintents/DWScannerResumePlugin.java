@@ -8,43 +8,7 @@ import android.content.Context;
 
 public class DWScannerResumePlugin extends DWProfileCommandBase {
 
-    private class onProfileCommandResultLocal implements onProfileCommandResult {
-        public onProfileCommandResult onProfileCommandResult = null;
-        public String profileName = null, action = null, command = null, result = null, resultInfo = null, commandidentifier = null;
-
-        public onProfileCommandResultLocal(onProfileCommandResult onProfileCommandResult)
-        {
-            this.onProfileCommandResult = onProfileCommandResult;
-        }
-
-        @Override
-        public void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier) {
-            this.profileName        = profileName ;
-            this.action             = action;
-            this.command            = command;
-            this.result             = result;
-            this.resultInfo         = resultInfo ;
-            this.commandidentifier  = commandidentifier;
-        }
-
-        @Override
-        public void timeout(String profileName) {
-            this.result = "TIMEOUT";
-            this.profileName = profileName;
-        }
-
-        public void executeResults()
-        {
-            onProfileCommandResult.result(this.profileName, this.action, this.command, this.result, this.resultInfo, this.commandidentifier);
-        }
-
-        public void executeTimeOut()
-        {
-            onProfileCommandResult.timeout(this.profileName);
-        }
-    }
-
-    private onProfileCommandResultLocal myLocalCallback;
+    private ProfileCommandResultBase myLocalCallback;
     private DWStatusScanner mScannerStatusChecker = null;
     private boolean intentLaunched = false;
 
@@ -52,13 +16,13 @@ public class DWScannerResumePlugin extends DWProfileCommandBase {
         super(aContext);
     }
 
-    public void execute(DWProfileBaseSettings settings, onProfileCommandResult callback)
+    public void execute(DWProfileBaseSettings settings, IProfileCommandResult callback)
     {
         /*
         Call base class execute to register command result
         broadcast receiver and launch timeout mechanism
          */
-        myLocalCallback = new onProfileCommandResultLocal(callback);
+        myLocalCallback = new ProfileCommandResultBase(callback);
 
         super.execute(settings, myLocalCallback);
 
@@ -73,12 +37,14 @@ public class DWScannerResumePlugin extends DWProfileCommandBase {
                 public void result(String status) {
                     if(status != null && (status.equalsIgnoreCase(DataWedgeConstants.SCAN_STATUS_WAITING)|| status.equalsIgnoreCase(DataWedgeConstants.SCAN_STATUS_SCANNING)))
                     {
-                        if(myLocalCallback != null) {
+                        if(myLocalCallback != null && myLocalCallback.initialized == true) {
+                            // Command has returned values
                             myLocalCallback.executeResults();
+
+                            mScannerStatusChecker.stop();
+                            mScannerStatusChecker.unRegisterNotificationReceiver();
+                            mScannerStatusChecker = null;
                         }
-                        mScannerStatusChecker.stop();
-                        mScannerStatusChecker.unRegisterNotificationReceiver();
-                        mScannerStatusChecker = null;
                     }
                     else if(myLocalCallback != null && myLocalCallback.result != null && myLocalCallback.result.equalsIgnoreCase("TIMEOUT"))
                     {

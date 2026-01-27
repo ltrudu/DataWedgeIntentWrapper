@@ -12,7 +12,7 @@ public class DWSwitchToProfile extends DWProfileCommandBase {
         super(aContext);
     }
 
-    public void execute(DWSwitchToProfileSettings settings, onProfileCommandResult callback)
+    public void execute(DWSwitchToProfileSettings settings, IProfileCommandResult callback)
     {
         /*
         Call base class execute to register command result

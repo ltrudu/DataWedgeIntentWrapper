@@ -12,7 +12,7 @@ public class DWProfileDelete extends DWProfileCommandBase {
         super(aContext);
     }
 
-    public void execute(DWProfileDeleteSettings settings, onProfileCommandResult callback)
+    public void execute(DWProfileDeleteSettings settings, IProfileCommandResult callback)
     {
         /*
         Call base class execute to register command result

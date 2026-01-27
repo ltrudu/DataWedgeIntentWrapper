@@ -72,7 +72,7 @@ public class DWSynchronousMethods {
         }
 
         final DWProfileSetConfig setConfig = new DWProfileSetConfig(mContext);
-        final DWProfileCommandBase.onProfileCommandResult onSetConfigCommandResult = new DWProfileCommandBase.onProfileCommandResult() {
+        final IProfileCommandResult onSetConfigCommandResult = new IProfileCommandResult() {
             @Override
             public void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier) {
                 if(result.equalsIgnoreCase(DataWedgeConstants.COMMAND_RESULT_SUCCESS))
@@ -141,7 +141,7 @@ public class DWSynchronousMethods {
         }
 
         DWScannerPluginEnable dwpluginenable = new DWScannerPluginEnable(mContext);
-        dwpluginenable.execute(settings, new DWProfileCommandBase.onProfileCommandResult() {
+        dwpluginenable.execute(settings, new IProfileCommandResult() {
             @Override
             public void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier) {
                 if(result.equalsIgnoreCase(DataWedgeConstants.COMMAND_RESULT_SUCCESS))
@@ -208,7 +208,7 @@ public class DWSynchronousMethods {
         }
 
         DWScannerPluginDisable dwplugindisable = new DWScannerPluginDisable(mContext);
-        dwplugindisable.execute(settings, new DWProfileCommandBase.onProfileCommandResult() {
+        dwplugindisable.execute(settings, new IProfileCommandResult() {
             @Override
             public void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier) {
                 if(result.equalsIgnoreCase(DataWedgeConstants.COMMAND_RESULT_SUCCESS))
@@ -275,7 +275,7 @@ public class DWSynchronousMethods {
         }
 
         DWScannerStartScan dwstartscan = new DWScannerStartScan(mContext);
-        dwstartscan.execute(settings, new DWProfileCommandBase.onProfileCommandResult() {
+        dwstartscan.execute(settings, new IProfileCommandResult() {
             @Override
             public void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier) {
                 if(result.equalsIgnoreCase(DataWedgeConstants.COMMAND_RESULT_SUCCESS))
@@ -343,7 +343,7 @@ public class DWSynchronousMethods {
         }
 
         DWScannerStopScan dwstopscan = new DWScannerStopScan(mContext);
-        dwstopscan.execute(settings, new DWProfileCommandBase.onProfileCommandResult() {
+        dwstopscan.execute(settings, new IProfileCommandResult() {
             @Override
             public void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier) {
                 if(result.equalsIgnoreCase(DataWedgeConstants.COMMAND_RESULT_SUCCESS))
@@ -550,7 +550,7 @@ public class DWSynchronousMethods {
         }
 
         DWProfileDelete dwprofileDelete = new DWProfileDelete(mContext);
-        dwprofileDelete.execute(settings, new DWProfileCommandBase.onProfileCommandResult() {
+        dwprofileDelete.execute(settings, new IProfileCommandResult() {
             @Override
             public void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier) {
                 if(result.equalsIgnoreCase(DataWedgeConstants.COMMAND_RESULT_SUCCESS))
@@ -613,7 +613,7 @@ public class DWSynchronousMethods {
         }
 
         DWProfileSwitchBarcodeParams dwProfileSwitchBarcodeParams = new DWProfileSwitchBarcodeParams(mContext);
-        dwProfileSwitchBarcodeParams.execute(settings, new DWProfileCommandBase.onProfileCommandResult() {
+        dwProfileSwitchBarcodeParams.execute(settings, new IProfileCommandResult() {
             @Override
             public void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier) {
                 if(result.equalsIgnoreCase(DataWedgeConstants.COMMAND_RESULT_SUCCESS))

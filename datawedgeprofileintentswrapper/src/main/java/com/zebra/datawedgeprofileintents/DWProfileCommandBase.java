@@ -10,8 +10,6 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.Log;
 
-import com.zebra.datawedgeprofileenums.SC_S_SCANNER_STATUS;
-
 import java.util.Date;
 import java.util.Set;
 
@@ -36,29 +34,18 @@ public class DWProfileCommandBase extends DWProfileBase {
         mBroadcastReceiver = new dataWedgeActionResultReceiver();
     }
 
-
-    /*
-        An interface callback to be informed of the result
-        when checking if a profile exists
-         */
-    public interface onProfileCommandResult
-    {
-        void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier);
-        void timeout(String profileName);
-    }
-
     /*
     A store to keep the callback to be fired when we will get the
     result of the intent
      */
-    private onProfileCommandResult mProfileCommandCallback = null;
+    private IProfileCommandResult mProfileCommandCallback = null;
 
     /*
     The receiver that we will register to retrieve DataWedge answer
      */
     private dataWedgeActionResultReceiver mBroadcastReceiver = null;
 
-    protected void execute(DWProfileBaseSettings settings, onProfileCommandResult callback)
+    protected void execute(DWProfileBaseSettings settings, IProfileCommandResult callback)
     {
         /*
         Launch timeout mechanism

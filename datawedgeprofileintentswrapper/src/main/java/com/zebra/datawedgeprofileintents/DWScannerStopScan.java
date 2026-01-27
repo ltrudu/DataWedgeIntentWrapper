@@ -12,7 +12,7 @@ public class DWScannerStopScan extends DWProfileCommandBase {
         super(aContext);
     }
 
-    public void execute(DWProfileBaseSettings settings, onProfileCommandResult callback)
+    public void execute(DWProfileBaseSettings settings, IProfileCommandResult callback)
     {
         /*
         Call base class execute to register command result

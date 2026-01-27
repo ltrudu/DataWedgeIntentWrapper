@@ -12,8 +12,7 @@ import com.zebra.datawedgeprofileintents.DWProfileDeleteSettings;
 import com.zebra.datawedgeprofileintents.DWProfileSetConfig;
 import com.zebra.datawedgeprofileintents.DWProfileSetConfigSettings;
 import com.zebra.datawedgeprofileintents.DataWedgeConstants;
-
-import java.util.Date;
+import com.zebra.datawedgeprofileintents.IProfileCommandResult;
 
 public class CreateProfileHelper {
 
@@ -72,7 +71,7 @@ public class CreateProfileHelper {
                         mProfileName = settings.mProfileName;
                         mTimeOutMS = settings.mTimeOutMS;
                     }};
-                    dwProfileDelete.execute(dwProfileDeleteSettings, new DWProfileCommandBase.onProfileCommandResult() {
+                    dwProfileDelete.execute(dwProfileDeleteSettings, new IProfileCommandResult() {
                         @Override
                         public void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier) {
                             if(result.equalsIgnoreCase(DataWedgeConstants.COMMAND_RESULT_SUCCESS))
@@ -125,7 +124,7 @@ public class CreateProfileHelper {
             mEnableTimeOutMechanism = settings.mEnableTimeOutMechanism;
         }};
 
-        profileCreate.execute(profileCreateSettings, new DWProfileCommandBase.onProfileCommandResult() {
+        profileCreate.execute(profileCreateSettings, new IProfileCommandResult() {
             @Override
             public void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier) {
                 if(result.equalsIgnoreCase(DataWedgeConstants.COMMAND_RESULT_SUCCESS))
@@ -157,7 +156,7 @@ public class CreateProfileHelper {
     {
         DWProfileSetConfig profileSetConfig = new DWProfileSetConfig(context);
 
-        profileSetConfig.execute(settings, new DWProfileCommandBase.onProfileCommandResult() {
+        profileSetConfig.execute(settings, new IProfileCommandResult() {
             @Override
             public void result(String profileName, String action, String command, String result, String resultInfo, String commandidentifier) {
                 if(result.equalsIgnoreCase(DataWedgeConstants.COMMAND_RESULT_SUCCESS))

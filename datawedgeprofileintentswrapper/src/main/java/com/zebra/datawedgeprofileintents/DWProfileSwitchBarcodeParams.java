@@ -14,7 +14,7 @@ public class DWProfileSwitchBarcodeParams extends DWProfileCommandBase {
         super(aContext);
     }
 
-    public void execute(DWProfileSwitchBarcodeParamsSettings settings, onProfileCommandResult callback)
+    public void execute(DWProfileSwitchBarcodeParamsSettings settings, IProfileCommandResult callback)
     {
         /*
         Call base class execute to register command result

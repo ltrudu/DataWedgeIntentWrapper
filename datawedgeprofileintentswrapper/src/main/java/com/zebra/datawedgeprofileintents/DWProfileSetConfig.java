@@ -2,11 +2,9 @@ package com.zebra.datawedgeprofileintents;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Pair;
 import android.widget.Toast;
 
 import com.zebra.datawedgeprofileenums.MB_E_CONFIG_MODE;
-import com.zebra.datawedgeprofileintents.SettingsPlugins.BaseSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +21,7 @@ public class DWProfileSetConfig extends DWProfileCommandBase {
 
     private DWProfileSetConfigSettings mBaseSettings = new DWProfileSetConfigSettings();
 
-    public void execute(DWProfileSetConfigSettings settings, onProfileCommandResult callback)
+    public void execute(DWProfileSetConfigSettings settings, IProfileCommandResult callback)
     {
         /*
         Call base class execute to register command result

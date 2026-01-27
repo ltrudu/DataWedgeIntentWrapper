@@ -8,17 +8,56 @@ import android.content.Context;
 
 public class DWScannerPluginDisable extends DWProfileCommandBase {
 
+    private ProfileCommandResultBase myLocalCallback;
+    private DWStatusScanner mScannerStatusChecker = null;
+
     public DWScannerPluginDisable(Context aContext) {
         super(aContext);
     }
 
-    public void execute(DWProfileBaseSettings settings, onProfileCommandResult callback)
+    public void execute(DWProfileBaseSettings settings, IProfileCommandResult callback)
     {
         /*
         Call base class execute to register command result
         broadcast receiver and launch timeout mechanism
          */
-        super.execute(settings, callback);
+        myLocalCallback = new ProfileCommandResultBase(callback);
+
+        super.execute(settings, myLocalCallback);
+
+        /*
+        Wait for Scanner status before sending the result.
+         */
+        DWStatusScannerSettings profileStatusSettings = new DWStatusScannerSettings()
+        {{
+            mPackageName = DWScannerPluginDisable.this.mContext.getPackageName();
+            mScannerCallback = new DWStatusScannerCallback() {
+                @Override
+                public void result(String status) {
+                    if(status != null && (status.equalsIgnoreCase(DataWedgeConstants.SCAN_STATUS_DISABLED)))
+                    {
+                        if(myLocalCallback != null && myLocalCallback.initialized == true) {
+                            // Command has returned values
+                            myLocalCallback.executeResults();
+
+                            mScannerStatusChecker.stop();
+                            mScannerStatusChecker.unRegisterNotificationReceiver();
+                            mScannerStatusChecker = null;
+                        }
+                    }
+                    else if(myLocalCallback != null && myLocalCallback.result != null && myLocalCallback.result.equalsIgnoreCase("TIMEOUT"))
+                    {
+                        myLocalCallback.executeTimeOut();
+                        mScannerStatusChecker.stop();
+                        mScannerStatusChecker.unRegisterNotificationReceiver();
+                        mScannerStatusChecker = null;
+                    }
+                }
+            };
+        }};
+
+        mScannerStatusChecker = new DWStatusScanner(this.mContext, profileStatusSettings);
+        mScannerStatusChecker.start();
 
         /*
         Disable plugin
