@@ -37,13 +37,32 @@ public class DWScannerSuspendPlugin extends DWProfileCommandBase {
                 public void result(String status) {
                     if(status != null && status.equalsIgnoreCase(DataWedgeConstants.SCAN_STATUS_IDLE))
                     {
-                        if(myLocalCallback != null && myLocalCallback.initialized == true) {
-                            // Command has returned values
-                            myLocalCallback.executeResults();
+                        if(myLocalCallback != null)
+                        {
+                            if(myLocalCallback.initialized == true) {
+                                // Command has returned values
+                                myLocalCallback.executeResults();
 
-                            mScannerStatusChecker.stop();
-                            mScannerStatusChecker.unRegisterNotificationReceiver();
-                            mScannerStatusChecker = null;
+                                mScannerStatusChecker.stop();
+                                mScannerStatusChecker.unRegisterNotificationReceiver();
+                                mScannerStatusChecker = null;
+                            }
+                            else
+                            {
+                                // We need to postpone the execution of the result to when
+                                // the command will send its return values
+                                myLocalCallback.postponedOnResult = new ProfileCommandResultBase.IPostponedOnResult() {
+                                    @Override
+                                    public void onResult() {
+                                        // Command has returned values
+                                        myLocalCallback.executeResults();
+
+                                        mScannerStatusChecker.stop();
+                                        mScannerStatusChecker.unRegisterNotificationReceiver();
+                                        mScannerStatusChecker = null;
+                                    }
+                                };
+                            }
                         }
                     }
                     else if(myLocalCallback != null && myLocalCallback.result != null && myLocalCallback.result.equalsIgnoreCase("TIMEOUT"))
