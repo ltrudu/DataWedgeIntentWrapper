@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -82,7 +83,12 @@ public class DWProfileCommandBase extends DWProfileBase {
         dwIntent.putExtra("SEND_RESULT","true");
         mCommandIdentifier = mSettings.mProfileName + new Date().getTime();
         dwIntent.putExtra("COMMAND_IDENTIFIER",mCommandIdentifier);
-        mContext.sendBroadcast(dwIntent);
+        if (Build.VERSION.SDK_INT >= 34) {
+            // Code for Android 14 (API 34) and higher
+            mContext.sendOrderedBroadcast(dwIntent, null);
+        }
+        else
+            mContext.sendBroadcast(dwIntent);
     }
 
 
@@ -94,7 +100,12 @@ public class DWProfileCommandBase extends DWProfileBase {
         dwIntent.putExtra("SEND_RESULT","true");
         mCommandIdentifier = mSettings.mProfileName + new Date().getTime();
         dwIntent.putExtra("COMMAND_IDENTIFIER",mCommandIdentifier);
-        mContext.sendBroadcast(dwIntent);
+        if (Build.VERSION.SDK_INT >= 34) {
+            // Code for Android 14 (API 34) and higher
+            mContext.sendOrderedBroadcast(dwIntent, null);
+        }
+        else
+            mContext.sendBroadcast(dwIntent);
     }
 
     protected void sendDataWedgeIntentWithExtraRequestResult(String action, String extraKey, Bundle extras)
@@ -105,7 +116,12 @@ public class DWProfileCommandBase extends DWProfileBase {
         dwIntent.putExtra("SEND_RESULT","true");
         mCommandIdentifier = mSettings.mProfileName + new Date().getTime();
         dwIntent.putExtra("COMMAND_IDENTIFIER",mCommandIdentifier);
-        mContext.sendBroadcast(dwIntent);
+        if (Build.VERSION.SDK_INT >= 34) {
+            // Code for Android 14 (API 34) and higher
+            mContext.sendOrderedBroadcast(dwIntent, null);
+        }
+        else
+            mContext.sendBroadcast(dwIntent);
     }
 
     protected class dataWedgeActionResultReceiver extends BroadcastReceiver

@@ -2,6 +2,7 @@ package com.zebra.datawedgeprofileintents;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -50,7 +51,12 @@ public abstract class DWProfileBase {
         Intent dwIntent = new Intent();
         dwIntent.setAction(action);
         dwIntent.putExtra(extraKey, extraValue);
-        mContext.sendBroadcast(dwIntent);
+        if (Build.VERSION.SDK_INT >= 34) {
+            // Code for Android 14 (API 34) and higher
+            mContext.sendOrderedBroadcast(dwIntent, null);
+        }
+        else
+            mContext.sendBroadcast(dwIntent);
     }
 
     protected void sendDataWedgeIntentWithExtra(String action, String extraKey, String[] extraValues)
@@ -58,7 +64,12 @@ public abstract class DWProfileBase {
         Intent dwIntent = new Intent();
         dwIntent.setAction(action);
         dwIntent.putExtra(extraKey, extraValues);
-        mContext.sendBroadcast(dwIntent);
+        if (Build.VERSION.SDK_INT >= 34) {
+            // Code for Android 14 (API 34) and higher
+            mContext.sendOrderedBroadcast(dwIntent, null);
+        }
+        else
+            mContext.sendBroadcast(dwIntent);
     }
 
     protected void sendDataWedgeIntentWithExtra(String action, String extraKey, Bundle extras)
@@ -66,7 +77,12 @@ public abstract class DWProfileBase {
         Intent dwIntent = new Intent();
         dwIntent.setAction(action);
         dwIntent.putExtra(extraKey, extras);
-        mContext.sendBroadcast(dwIntent);
+        if (Build.VERSION.SDK_INT >= 34) {
+            // Code for Android 14 (API 34) and higher
+            mContext.sendOrderedBroadcast(dwIntent, null);
+        }
+        else
+            mContext.sendBroadcast(dwIntent);
     }
 
     protected void execute(DWProfileBaseSettings settings)
